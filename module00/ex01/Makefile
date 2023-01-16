@@ -5,6 +5,7 @@ CC = g++
 CFLAGS = -Wall -Wextra -Werror -g3 -std=c++98
 
 SRCS = phonebook.cpp \
+	contact.cpp \
 	main.cpp
 
 OBJ = $(SRCS:.cpp=.o)
@@ -20,7 +21,7 @@ all: $(NAME)
 
 clean:
 	@rm -rf $(OBJ)
-	@echo "megaphone is clean"
+	@echo "Phonebook is clean"
 
 fclean: clean
 	@rm -rf $(NAME)

@@ -1,24 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   contact.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cchapon <cchapon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/13 16:21:42 by cchapon           #+#    #+#             */
-/*   Updated: 2023/01/16 16:24:49 by cchapon          ###   ########.fr       */
+/*   Created: 2023/01/16 18:24:11 by cchapon           #+#    #+#             */
+/*   Updated: 2023/01/16 18:38:29 by cchapon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "phonebook.hpp"
+#include <iostream>
+#include <cstring>
 
-int main (int argc, char **argv)
-{
-	if (argc == 1)
-	{
-		std::cout << "Welcome to this amazing PhoneBook program !" << std::endl;
-		std::cout << "Please type ADD, SEARCH or EXIT and see all the crazy stuff you can do !!" << std::endl;
-		PhoneBook PhoneBook_obj(*(argv + 1));
-	}
-	return (0);
-}
+#ifndef CONTACT_H
+# define CONTACT_H
+
+class Contact {
+		std::string firstname;
+		std::string lastname;
+		std::string nickname;
+		std::string phone_nbr;
+		std::string darkest_secret;
+
+	public:		
+		Contact();
+		~Contact();
+		bool 	is_empty(Contact entry);
+		void	add_data(Contact entry);
+};
+
+#endif
