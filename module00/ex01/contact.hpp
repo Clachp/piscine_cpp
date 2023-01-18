@@ -6,7 +6,7 @@
 /*   By: cchapon <cchapon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 18:24:11 by cchapon           #+#    #+#             */
-/*   Updated: 2023/01/16 18:38:29 by cchapon          ###   ########.fr       */
+/*   Updated: 2023/01/18 18:28:56 by cchapon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,16 @@ class Contact {
 		std::string nickname;
 		std::string phone_nbr;
 		std::string darkest_secret;
+		static int	contact_nbr;
 
 	public:		
 		Contact();
 		~Contact();
-		bool 	is_empty(Contact entry);
-		void	add_data(Contact entry);
+		bool 	is_empty() const;
+		void   add_data();
+		void	search() const;
+		void	display_contact() const;
+		static int	get_contact_nbr();
 };
 
 #endif

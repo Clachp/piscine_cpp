@@ -6,39 +6,46 @@
 /*   By: cchapon <cchapon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 18:03:38 by cchapon           #+#    #+#             */
-/*   Updated: 2023/01/16 18:44:42 by cchapon          ###   ########.fr       */
+/*   Updated: 2023/01/18 19:14:12 by cchapon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "phonebook.hpp"
 
-std::string	get_input(std::string input)
-{
-	std::cout << "Please type ADD, SEARCH or EXIT : ";
+std::string	PhoneBook::get_input(std::string input, std::string message) const {
+	std::cout << message;
 	std::cin >> input;
-	//std::cout << "You typed " << input << std::endl;
 	return (input);
 }
 
-PhoneBook::PhoneBook(char *argv) {
-	while (1)
+// void	PhoneBook::search(std::string input) const
+// {
+	
+// }
+
+PhoneBook::PhoneBook(char *arg): index(0) 
+{
+	while (*arg)
 	{
-		input = get_input(input);
+		input = get_input(input, "Please type ADD, SEARCH or EXIT : ");
 		std::cout << "You typed " << input << std::endl;
 		if (input.compare("ADD") == 0)
 		{
-			//add_contact(entries);
-			std::cout << "contact nbr = " << std::endl;
-			
+			if (index == 3)
+				std::cout << "The Phonebook is full" << std::endl;
+			else
+			{
+				entries[index].add_data(); 
+				index++;
+				std::cout << "Index = " << index << std::endl;
+			}
 		}
-		else if (PhoneBook::input.compare("SEARCH") == 0)
-			std::cout << "Yes. c'est " << argv << std::endl;
-		else if (PhoneBook::input.compare("EXIT") == 0)
+		else if (input.compare("SEARCH") == 0)
 		{
-			PhoneBook::~PhoneBook();
-			return ;
+			entries[0].display_contact();
 		}
-		//get_input(PhoneBook::input);
+		else if (input.compare("EXIT") == 0)
+			return ;
 	}
 }
 
