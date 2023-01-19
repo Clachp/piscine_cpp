@@ -24,13 +24,15 @@ class PhoneBook {
 		int			index;
 	
 	public:
-		PhoneBook(char *arg);
+		PhoneBook();
 		~PhoneBook();
 		int 		add_item(std::string content, std::string item);
 		void		search();
-		std::string	get_input(std::string input, std::string message) const;
 		void		search(Contact *entries) const;
+		void		get_input();
+		void		run();
 		
 };
+
 
 #endif

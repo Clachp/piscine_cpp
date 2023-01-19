@@ -12,22 +12,16 @@
 
 #include "phonebook.hpp"
 
-std::string	PhoneBook::get_input(std::string input, std::string message) const {
-	std::cout << message;
-	std::cin >> input;
-	return (input);
-}
-
-// void	PhoneBook::search(std::string input) const
-// {
-	
+// void	PhoneBook::get_input() {
+// 	std::cout << "Please type ADD, SEARCH or EXIT : ";
+// 	std::cin >> this->input;
 // }
 
-PhoneBook::PhoneBook(char *arg): index(0) 
-{
-	while (*arg)
+void	PhoneBook::run() {
+	while (1)
 	{
-		input = get_input(input, "Please type ADD, SEARCH or EXIT : ");
+		std::cout << "Please type ADD, SEARCH or EXIT : ";
+		std::cin >> this->input;
 		std::cout << "You typed " << input << std::endl;
 		if (input.compare("ADD") == 0)
 		{
@@ -47,6 +41,12 @@ PhoneBook::PhoneBook(char *arg): index(0)
 		else if (input.compare("EXIT") == 0)
 			return ;
 	}
+}
+
+PhoneBook::PhoneBook(void): index(0) 
+{
+	std::cout << "Welcome to this amazing PhoneBook program !" << std::endl;
+	std::cout << "Please type ADD, SEARCH or EXIT and see all the crazy stuff you can do !!" << std::endl;
 }
 
 PhoneBook::~PhoneBook(void) {
