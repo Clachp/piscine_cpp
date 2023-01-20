@@ -6,19 +6,32 @@
 /*   By: cchapon <cchapon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 18:31:54 by cchapon           #+#    #+#             */
-/*   Updated: 2023/01/20 13:47:41 by cchapon          ###   ########.fr       */
+/*   Updated: 2023/01/20 20:11:19 by cchapon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "phonebook.hpp"
 
-bool Contact::is_empty() const
-{
-	if (this->firstname != "") /*|| this->lastname != "" || \
-	this->nickname != "" || this->phone_nbr != "" || this->darkest_secret != "")*/
-		return (false);
-	return (true);
-};
+/* NUMBER OF CONTACTS GENERATED */
+
+int	Contact::contact_nbr = 0;
+
+int	Contact::get_contact_nbr() {
+	return Contact::contact_nbr;
+}
+
+/* CONSTRUCTOR */
+
+Contact::Contact() {
+	Contact::contact_nbr++;
+	return ; 
+}
+
+/* DESCTRUCTOR */
+
+Contact::~Contact(void) { return; }
+
+/* ADDING DATA FUNCTIONS */
 
 void check_item(std::string &content, std::string item)
 {
@@ -30,9 +43,9 @@ void check_item(std::string &content, std::string item)
 	}
 };
 
-void	Contact::add_data() 
+void	Contact::add_data(int index) 
 {
-	if (is_empty() == true)
+	if (this->firstname == "" || index < 8)
 	{
 		std::cout << "firstname : ";
 		getline(std::cin, this->firstname);
@@ -45,43 +58,42 @@ void	Contact::add_data()
 		check_item(this->phone_nbr, "phone number : ");
 		std::cout << "darkest secret : ";
 		check_item(this->darkest_secret, "darkest secret : ");
-		std::cout << "Contact added succesfully" << std::endl;
+		std::cout << "Contact added succesfully in index " << index + 1 <<  std::endl;
 		return ;
 	}
 };
 
-void	Contact::display_contact() const
+/* DISPLAY DATA FUNCTIONS */
+
+std::string truncate_str(std::string str)
 {
-	std::cout<< std::right << std::setw(10)<< "index";
+	if (str.length() < 10)
+		return(str);
+	str.resize(10);
+	if (str[9])
+		str[9] = '.';
+	return (str);
+}
+
+void	Contact::display_contact(int index) const
+{
+	if (this->firstname == ""|| index > 8)
+	{
+		std::cout << "No contact in index " << index << std::endl;
+		return ;
+	} 
+	std::cout << std::right << std::setw(10)<< "index";
 	std::cout << " | ";
 	std::cout<< std::right << std::setw(10)<< "first name";
 	std::cout << " | ";
 	std::cout<< std::right << std::setw(10)<< "last name";
 	std::cout << " | ";
 	std::cout<< std::right << std::setw(10)<< "nickname" << std::endl;
-	
-	std::cout<< std::right << std::setw(10)<< Contact::contact_nbr;
+	std::cout<< std::right << std::setw(10)<< index;
 	std::cout << " | ";
-	std::cout<< std::right << std::setw(10)<< this->firstname;
+	std::cout<< std::right << std::setw(10)<< truncate_str(this->firstname);
 	std::cout << " | ";
-	std::cout<< std::right << std::setw(10)<< this->lastname;
+	std::cout<< std::right << std::setw(10)<< truncate_str(this->lastname);
 	std::cout << " | ";
-	std::cout<< std::right << std::setw(10)<< this->nickname << std::endl;
+	std::cout<< std::right << std::setw(10)<< truncate_str(this->nickname) << std::endl;
 }
-
-int	Contact::get_contact_nbr()
-{
-	return Contact::contact_nbr;
-}
-
-int	Contact::contact_nbr = 0;
-
-Contact::Contact() {
-	Contact::contact_nbr++;
-	std::cout << "contact nbr : " << contact_nbr << std::endl;
-	return; 
-}
-
-Contact::~Contact(void) { 
-	
-	return; }

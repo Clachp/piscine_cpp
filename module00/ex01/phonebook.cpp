@@ -6,50 +6,72 @@
 /*   By: cchapon <cchapon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 18:03:38 by cchapon           #+#    #+#             */
-/*   Updated: 2023/01/18 19:14:12 by cchapon          ###   ########.fr       */
+/*   Updated: 2023/01/20 20:07:47 by cchapon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "phonebook.hpp"
 
-// void	PhoneBook::get_input() {
-// 	std::cout << "Please type ADD, SEARCH or EXIT : ";
-// 	std::cin >> this->input;
-// }
+/* CONSTRUCTOR */
+
+PhoneBook::PhoneBook(void): index(0), search_index(0) {
+	std::cout << "Welcome to this amazing PhoneBook program !" << std::endl;
+	std::cout << "This PhoneBook can hold " << Contact::get_contact_nbr() << " contacts !!!" << std::endl;
+	return ;
+}
+
+/* DESCTRUCTOR */
+
+PhoneBook::~PhoneBook(void) {
+	std::cout << "See you soon !" << std::endl;
+	return ;
+}
+
+/* SEARCH CONTACT FUNCTIONS */
+
+void PhoneBook::str_to_int() {
+	search_index = 0;
+	std::cin >> this->search_input;
+    for (long unsigned int i = 0; i < search_input.length(); i++) {
+        search_index = search_index * 10 + (search_input[i] - '0');
+	}
+	if (search_index <= 0)
+		std::cout <<  "Unvalid format dan atoi" << std::endl;
+}
+
+void PhoneBook::search() {
+	std::cout <<  "Please type the contact's index you want to display : ";
+	str_to_int();
+	if (search_index > 0 && search_index <= 8) //&& entries[search_index - 1] != NULL
+		entries[search_index - 1].display_contact(search_index);
+	else
+		std::cout <<  "NO" << std::endl;	
+}
+
+/* RUN PROGRAMM FUNCTION */
 
 void	PhoneBook::run() {
-	while (1)
+	while (this->input.empty() == true)
 	{
 		std::cout << "Please type ADD, SEARCH or EXIT : ";
 		std::cin >> this->input;
 		std::cout << "You typed " << input << std::endl;
 		if (input.compare("ADD") == 0)
 		{
-			if (index == 3)
-				std::cout << "The Phonebook is full" << std::endl;
-			else
+			if (index == 8)
 			{
-				entries[index].add_data(); 
-				index++;
-				std::cout << "Index = " << index << std::endl;
+				std::cout << "The Phonebook is full.\nErasing contact in index 1" << std::endl;
+				index = 0;
 			}
+			entries[index].add_data(index); 
+			index++;
 		}
 		else if (input.compare("SEARCH") == 0)
-		{
-			entries[0].display_contact();
-		}
+			search();
 		else if (input.compare("EXIT") == 0)
 			return ;
+		else	
+			std::cout <<  "Unvalid format" << std::endl;
+		this->input.clear();
 	}
-}
-
-PhoneBook::PhoneBook(void): index(0) 
-{
-	std::cout << "Welcome to this amazing PhoneBook program !" << std::endl;
-	std::cout << "Please type ADD, SEARCH or EXIT and see all the crazy stuff you can do !!" << std::endl;
-}
-
-PhoneBook::~PhoneBook(void) {
-	std::cout << "See you soon !" << std::endl;
-	return ;
 }

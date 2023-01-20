@@ -6,12 +6,9 @@
 /*   By: cchapon <cchapon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 17:59:10 by cchapon           #+#    #+#             */
-/*   Updated: 2023/01/20 13:41:37 by cchapon          ###   ########.fr       */
+/*   Updated: 2023/01/20 20:08:22 by cchapon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#ifndef PHONEBOOK_H
-# define PHONEBOOK_H
 
 #include <iostream>
 #include <cstring>
@@ -19,20 +16,22 @@
 #include <limits>
 #include "contact.hpp"
 
+#ifndef _PHONEBOOK_
+# define _PHONEBOOK_
+
 class PhoneBook {
-		Contact 	entries[3];
+		Contact 	entries[8];
 		std::string input;
 		int			index;
+		std::string	search_input;
+		int			search_index;
 	
 	public:
 		PhoneBook();
 		~PhoneBook();
-		int 		add_item(std::string content, std::string item);
-		void		search();
-		void		search(Contact *entries) const;
-		void		get_input();
-		void		run();
-		
+		void 	str_to_int();
+		void	search();
+		void	run();
 };
 
 

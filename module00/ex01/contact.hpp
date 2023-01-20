@@ -6,15 +6,15 @@
 /*   By: cchapon <cchapon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 18:24:11 by cchapon           #+#    #+#             */
-/*   Updated: 2023/01/18 18:28:56 by cchapon          ###   ########.fr       */
+/*   Updated: 2023/01/20 18:56:52 by cchapon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <cstring>
 
-#ifndef CONTACT_H
-# define CONTACT_H
+#ifndef _CONTACT_
+# define _CONTACT_
 
 class Contact {
 		std::string firstname;
@@ -27,11 +27,10 @@ class Contact {
 	public:		
 		Contact();
 		~Contact();
-		bool 	is_empty() const;
-		void   add_data();
-		void	search() const;
-		void	display_contact() const;
 		static int	get_contact_nbr();
+		bool 		is_empty() const;
+		void  		add_data(int index);
+		void		display_contact(int index) const;
 };
 
 #endif
