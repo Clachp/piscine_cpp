@@ -6,7 +6,7 @@
 /*   By: cchapon <cchapon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 16:21:42 by cchapon           #+#    #+#             */
-/*   Updated: 2023/01/18 19:14:29 by cchapon          ###   ########.fr       */
+/*   Updated: 2023/01/20 13:21:25 by cchapon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int main (void)
 {
-	PhoneBook PhoneBook_obj();
+	PhoneBook PhoneBook_obj;
 	PhoneBook_obj.run();
 	return (0);
 }

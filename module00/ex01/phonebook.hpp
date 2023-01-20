@@ -6,7 +6,7 @@
 /*   By: cchapon <cchapon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 17:59:10 by cchapon           #+#    #+#             */
-/*   Updated: 2023/01/18 19:14:19 by cchapon          ###   ########.fr       */
+/*   Updated: 2023/01/20 13:41:37 by cchapon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <iostream>
 #include <cstring>
 #include <iomanip>
+#include <limits>
 #include "contact.hpp"
 
 class PhoneBook {

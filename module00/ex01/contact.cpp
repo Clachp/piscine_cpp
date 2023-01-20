@@ -6,7 +6,7 @@
 /*   By: cchapon <cchapon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 18:31:54 by cchapon           #+#    #+#             */
-/*   Updated: 2023/01/18 20:01:46 by cchapon          ###   ########.fr       */
+/*   Updated: 2023/01/20 13:47:41 by cchapon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	Contact::add_data()
 	if (is_empty() == true)
 	{
 		std::cout << "firstname : ";
+		getline(std::cin, this->firstname);
 		check_item(this->firstname, "firstname : ");
 		std::cout << "lastname : ";
 		check_item(this->lastname, "lastname : ");
