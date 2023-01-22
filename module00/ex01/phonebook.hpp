@@ -12,6 +12,7 @@
 
 #include <iostream>
 #include <cstring>
+#include <fstream> 
 #include <iomanip>
 #include <limits>
 #include "contact.hpp"
@@ -29,9 +30,9 @@ class PhoneBook {
 	public:
 		PhoneBook();
 		~PhoneBook();
-		void 	str_to_int();
-		void	search();
-		void	run();
+		void 		str_to_int();
+		void		search();
+		void		run();
 };
 
 

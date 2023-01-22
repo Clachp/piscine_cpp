@@ -15,15 +15,14 @@
 /* CONSTRUCTOR */
 
 PhoneBook::PhoneBook(void): index(0), search_index(0) {
-	std::cout << "Welcome to this amazing PhoneBook program !" << std::endl;
-	std::cout << "This PhoneBook can hold " << Contact::get_contact_nbr() << " contacts !!!" << std::endl;
+	std::cout << "\nThis PhoneBook can hold " << Contact::get_contact_nbr() << " contacts 🤙\n" << std::endl;
 	return ;
 }
 
 /* DESCTRUCTOR */
 
 PhoneBook::~PhoneBook(void) {
-	std::cout << "See you soon !" << std::endl;
+	std::cout << "See you soon 💖" << std::endl;
 	return ;
 }
 
@@ -55,11 +54,12 @@ void	PhoneBook::run() {
 	{
 		std::cout << "Please type ADD, SEARCH or EXIT : ";
 		std::cin >> this->input;
-		std::cout << "You typed " << input << std::endl;
-		if (input.compare("ADD") == 0)
-		{
-			if (index == 8)
-			{
+		if (std::cin.eof())
+			std::cout << "\nHandling EOF like 💅" << std::endl;
+		else
+			std::cout << "You typed " << input << std::endl;
+		if (input.compare("ADD") == 0) {
+			if (index == 8) {
 				std::cout << "The Phonebook is full.\nErasing contact in index 1" << std::endl;
 				index = 0;
 			}
@@ -68,7 +68,7 @@ void	PhoneBook::run() {
 		}
 		else if (input.compare("SEARCH") == 0)
 			search();
-		else if (input.compare("EXIT") == 0)
+		else if (input.compare("EXIT") == 0 || std::cin.eof()) 
 			return ;
 		else	
 			std::cout <<  "Unvalid format" << std::endl;

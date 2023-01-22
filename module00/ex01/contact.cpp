@@ -23,7 +23,10 @@ int	Contact::get_contact_nbr() {
 /* CONSTRUCTOR */
 
 Contact::Contact() {
-	Contact::contact_nbr++;
+	if (++contact_nbr == 1)
+		std::cout << "📞 " << contact_nbr << " contact created" << std::endl;
+	else
+		std::cout << "📞 " <<contact_nbr << " contacts created" << std::endl;
 	return ; 
 }
 
@@ -45,8 +48,7 @@ void check_item(std::string &content, std::string item)
 
 void	Contact::add_data(int index) 
 {
-	if (this->firstname == "" || index < 8)
-	{
+	if (this->firstname == "" || index < 8) {
 		std::cout << "firstname : ";
 		getline(std::cin, this->firstname);
 		check_item(this->firstname, "firstname : ");
@@ -77,8 +79,7 @@ std::string truncate_str(std::string str)
 
 void	Contact::display_contact(int index) const
 {
-	if (this->firstname == ""|| index > 8)
-	{
+	if (this->firstname == ""|| index > 8) {
 		std::cout << "No contact in index " << index << std::endl;
 		return ;
 	} 

@@ -12,9 +12,10 @@
 
 #include "phonebook.hpp"
 
-int main (void)
-{
+
+int main (void) {
+	std::cout << "☎️  Welcome to this amazing PhoneBook program ! ☎️\n" << std::endl;
 	PhoneBook PhoneBook_obj;
 	PhoneBook_obj.run();
-	return (0);
+return (0);
 }
