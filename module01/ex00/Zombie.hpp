@@ -6,7 +6,7 @@
 /*   By: cchapon <cchapon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 19:06:21 by cchapon           #+#    #+#             */
-/*   Updated: 2023/01/23 19:12:39 by cchapon          ###   ########.fr       */
+/*   Updated: 2023/02/01 18:52:13 by cchapon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,17 @@
 
 class Zombie {
 	private :
-		std::string name;
+		std::string _name;
 		
 	public :
+		Zombie(std::string name);
+		Zombie();
+		~Zombie();
 		void announce (void);
-	
+		void get_name(std::string name);
 };
+
+Zombie* newZombie( std::string name );
+void randomChump(std::string name);
 
 #endif
