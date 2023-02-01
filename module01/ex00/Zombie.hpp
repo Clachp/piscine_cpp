@@ -6,7 +6,7 @@
 /*   By: cchapon <cchapon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 19:06:21 by cchapon           #+#    #+#             */
-/*   Updated: 2023/02/01 18:52:13 by cchapon          ###   ########.fr       */
+/*   Updated: 2023/02/01 19:17:36 by cchapon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ class Zombie {
 		Zombie();
 		~Zombie();
 		void announce (void);
-		void get_name(std::string name);
+		std::string get_name(std::string name);
 };
 
 Zombie* newZombie( std::string name );
