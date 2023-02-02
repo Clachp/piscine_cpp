@@ -6,7 +6,7 @@
 /*   By: cchapon <cchapon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 15:43:18 by cchapon           #+#    #+#             */
-/*   Updated: 2023/02/01 19:18:31 by cchapon          ###   ########.fr       */
+/*   Updated: 2023/02/02 13:52:27 by cchapon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ Zombie::Zombie() {
 	return ;
 }
 
-void Zombie::announce (void) {
+void Zombie::announce (void) const {
 	std::cout << _name << ": BraiiiiiiinnnzzzZ..." << std::endl;
 };
 
@@ -35,4 +35,3 @@ Zombie::~Zombie(void) {
 	std::cout << _name << " has been destroyed" << std::endl;
 	return ;
 }
-

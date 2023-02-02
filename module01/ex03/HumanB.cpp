@@ -1,22 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   HumanB.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cchapon <cchapon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/01 15:41:22 by cchapon           #+#    #+#             */
-/*   Updated: 2023/02/02 13:58:13 by cchapon          ###   ########.fr       */
+/*   Created: 2023/02/02 16:51:40 by cchapon           #+#    #+#             */
+/*   Updated: 2023/02/02 16:56:38 by cchapon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "HumanB.hpp"
 
-int main (void) {
-	Zombie *martins = zombieHorde(3, "Martin");
-	for (int i = 0; i < 3; i++) {
-		(martins + i)->announce();
-	}
-	delete [] martins;
-	return (0);
-}
+HumanB::HumanB() { return; };
+
+HumanB::~HumanB() { return; };
+
+void HumanB::attack() const {
+	std::cout << name << " attacks with their " << weapon type << std::endl;
+};

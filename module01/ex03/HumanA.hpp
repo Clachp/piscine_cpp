@@ -1,22 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   HumanA.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cchapon <cchapon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/01 15:41:22 by cchapon           #+#    #+#             */
-/*   Updated: 2023/02/02 13:58:13 by cchapon          ###   ########.fr       */
+/*   Created: 2023/02/02 16:42:44 by cchapon           #+#    #+#             */
+/*   Updated: 2023/02/02 17:13:31 by cchapon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#ifndef _HUMANA_
+# define _HUMANA_
 
-int main (void) {
-	Zombie *martins = zombieHorde(3, "Martin");
-	for (int i = 0; i < 3; i++) {
-		(martins + i)->announce();
-	}
-	delete [] martins;
-	return (0);
+class HumanA {
+	private :
+		Weapon _weapon;
+		std::string _name;
+	
+	public :
+		HumanA();
+		~HumanA();
+		void attack() const;
 }
+
+
+#endif

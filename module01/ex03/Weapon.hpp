@@ -1,22 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Weapon.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cchapon <cchapon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/01 15:41:22 by cchapon           #+#    #+#             */
-/*   Updated: 2023/02/02 13:58:13 by cchapon          ###   ########.fr       */
+/*   Created: 2023/02/02 15:32:25 by cchapon           #+#    #+#             */
+/*   Updated: 2023/02/02 16:45:52 by cchapon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include <iostream>
+#include <cstring>
+#include "HumanA.hpp"
+#include "HumanB.hpp"
 
-int main (void) {
-	Zombie *martins = zombieHorde(3, "Martin");
-	for (int i = 0; i < 3; i++) {
-		(martins + i)->announce();
-	}
-	delete [] martins;
-	return (0);
-}
+
+#ifndef _WEAPON_
+# define _WEAPON_
+
+class Weapon {
+	private :
+		std::string _type;
+		
+	public :
+		Weapon();
+		~Weapon();
+		std::string& getType(std::string type);
+		std::string setType(std::string type);
+
+};
+
+#endif

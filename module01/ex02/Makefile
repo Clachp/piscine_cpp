@@ -1,12 +1,10 @@
-NAME = zombie
+NAME = brain
 
 CC = c++
 
 CFLAGS = -Wall -Wextra -Werror -g3 -std=c++98
 
-SRCS = Zombie.cpp \
-	main.cpp \
-	zombieHorde.cpp
+SRCS = main.cpp 
 
 OBJ = $(SRCS:.cpp=.o)
 
@@ -15,13 +13,13 @@ OBJ = $(SRCS:.cpp=.o)
 
 $(NAME) : $(OBJ)
 	$(CC) $(CFLAGS) $(SRCS) -o $(NAME)
-	@echo "Zombie compiled"
+	@echo "$(NAME) compiled"
 
 all: $(NAME)
 
 clean:
 	@rm -rf $(OBJ)
-	@echo "Zombie is clean"
+	@echo "$(NAME) is clean"
 
 fclean: clean
 	@rm -rf $(NAME)
