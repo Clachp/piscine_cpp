@@ -21,9 +21,10 @@ class HumanB {
 		std::string _name;
 	
 	public :
-		HumanB();
+		HumanB(std::string name);
 		~HumanB();
+		void setWeapon(Weapon weapon);
 		void attack() const;
-}
+};
 
 #endif

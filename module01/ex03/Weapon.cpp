@@ -12,13 +12,18 @@
 
 #include "Weapon.hpp"
 
-Weapon::Weapon () { return; };
+Weapon::Weapon() { return; };
+
+Weapon::Weapon (std::string type): _type(type) { 
+	return ; 
+};
 
 Weapon::~Weapon() { return; };
 
-std::string& Weapon::getType(std::string type) {
-	std::string& typeREF  = type;
-	return (typeREF);
+std::string const & Weapon::getType() {
+	// std::string& typeREF = _type;
+	// return (typeREF);
+	return this->_type;
 };
 
 std::string Weapon::setType(std::string newType) {

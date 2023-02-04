@@ -10,19 +10,20 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "Weapon.hpp"
+
 #ifndef _HUMANA_
 # define _HUMANA_
 
 class HumanA {
 	private :
-		Weapon _weapon;
 		std::string _name;
+		Weapon& _weapon;
 	
 	public :
-		HumanA();
+		HumanA(std::string name, Weapon& weapon);
 		~HumanA();
 		void attack() const;
-}
-
+};
 
 #endif
