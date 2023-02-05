@@ -20,13 +20,11 @@ Weapon::Weapon (std::string type): _type(type) {
 
 Weapon::~Weapon() { return; };
 
-std::string const & Weapon::getType() {
-	// std::string& typeREF = _type;
-	// return (typeREF);
+const std::string& Weapon::getType() {
 	return this->_type;
 };
 
-std::string Weapon::setType(std::string newType) {
-	_type = newType;
+std::string Weapon::setType(std::string type) {
+	_type = type;
 	return (_type);
 };
