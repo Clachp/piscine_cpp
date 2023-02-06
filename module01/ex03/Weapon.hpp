@@ -6,7 +6,7 @@
 /*   By: cchapon <cchapon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 15:32:25 by cchapon           #+#    #+#             */
-/*   Updated: 2023/02/02 16:45:52 by cchapon          ###   ########.fr       */
+/*   Updated: 2023/02/06 13:06:18 by cchapon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ class Weapon {
 		Weapon();
 		Weapon(std::string type);
 		~Weapon();
-		const std::string& getType();
+		const std::string& getType() const;
 		std::string setType(std::string type);
 
 };

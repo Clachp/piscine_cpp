@@ -6,7 +6,7 @@
 /*   By: cchapon <cchapon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 16:43:29 by cchapon           #+#    #+#             */
-/*   Updated: 2023/02/02 16:51:22 by cchapon          ###   ########.fr       */
+/*   Updated: 2023/02/06 13:34:23 by cchapon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@
 
 class HumanB {
 		private :
-		Weapon _weapon;
+		Weapon* _weapon;
 		std::string _name;
 	
 	public :
 		HumanB(std::string name);
 		~HumanB();
-		void setWeapon(Weapon weapon);
+		void setWeapon(Weapon& weapon);
 		void attack() const;
 };
 

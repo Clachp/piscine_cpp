@@ -6,7 +6,7 @@
 /*   By: cchapon <cchapon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 16:51:40 by cchapon           #+#    #+#             */
-/*   Updated: 2023/02/02 16:58:22 by cchapon          ###   ########.fr       */
+/*   Updated: 2023/02/06 13:47:03 by cchapon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,5 @@ HumanA::HumanA(std::string name, Weapon& weapon) : _name(name), _weapon(weapon) 
 HumanA::~HumanA() { return; };
 
 void HumanA::attack() const {
-	std::cout << this->_name << " attacks with their " << this->_weapon.getType() << std::endl;
+	std::cout << _name << " attacks with their " << _weapon.getType() << std::endl;
 };
