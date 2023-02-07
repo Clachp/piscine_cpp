@@ -23,7 +23,10 @@ class Harl {
 		void error( void );
 		
 	public :
-		void complain( std::string level );
+		Harl();
+		~Harl();
+		void complain( std::string level ); // level = DEBUG, INFO, WARNING, ERROR
+		void (*messageType)();
 };
 
 #endif

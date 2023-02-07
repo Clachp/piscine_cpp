@@ -10,3 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "Harl.hpp"
+
+int main (void)
+{
+    Harl harl_obj;
+    harl_obj.complain("debug");
+    return (0);
+}

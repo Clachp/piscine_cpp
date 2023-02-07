@@ -19,11 +19,11 @@ all: $(NAME)
 
 clean:
 	@rm -rf $(OBJ)
+	@rm -rf *.replace
 	@echo "$(NAME) is clean"
 
 fclean: clean
 	@rm -rf $(NAME)
-	@rm -rf file.replace
 
 re: fclean all
 
