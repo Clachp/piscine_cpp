@@ -6,7 +6,7 @@
 /*   By: cchapon <cchapon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 16:51:40 by cchapon           #+#    #+#             */
-/*   Updated: 2023/02/06 13:47:26 by cchapon          ###   ########.fr       */
+/*   Updated: 2023/02/08 16:32:32 by cchapon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,8 @@ void HumanB::setWeapon(Weapon& weapon) {
 }
 
 void HumanB::attack() const {
-	std::cout << _name << " attacks with their " << _weapon->getType() <<std::endl;
+	if (_weapon)
+		std::cout << _name << " attacks with their " << _weapon->getType() <<std::endl;
+	else
+		std::cout << _name << " doesn't have a weapon " <<std::endl;
 };

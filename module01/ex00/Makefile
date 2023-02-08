@@ -11,18 +11,18 @@ SRCS = Zombie.cpp \
 
 OBJ = $(SRCS:.cpp=.o)
 
-%.o: %.c
+%.o: %.cpp
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME) : $(OBJ)
 	$(CC) $(CFLAGS) $(SRCS) -o $(NAME)
-	@echo "Zombie compiled"
+	@echo "$(NAME) compiled"
 
 all: $(NAME)
 
 clean:
 	@rm -rf $(OBJ)
-	@echo "Zombie is clean"
+	@echo "$(NAME) is clean"
 
 fclean: clean
 	@rm -rf $(NAME)

@@ -6,7 +6,7 @@
 /*   By: cchapon <cchapon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 18:59:59 by cchapon           #+#    #+#             */
-/*   Updated: 2023/02/08 12:49:43 by cchapon          ###   ########.fr       */
+/*   Updated: 2023/02/08 14:04:33 by cchapon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 
 class Harl {
 
-	
 	private :
 		void debug( void );
 		void info( void );
@@ -27,8 +26,7 @@ class Harl {
 	public :
 		Harl();
 		~Harl();
-		void complain( std::string level ); // level = DEBUG, INFO, WARNING, ERROR
-		//void (*messageType[4])();
+		void complain( std::string level );
 };
 
 #endif
