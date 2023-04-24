@@ -6,7 +6,7 @@
 /*   By: cchapon <cchapon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 15:43:18 by cchapon           #+#    #+#             */
-/*   Updated: 2023/02/01 19:18:31 by cchapon          ###   ########.fr       */
+/*   Updated: 2023/02/08 14:57:52 by cchapon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 Zombie::Zombie(std::string name) {
 	this->_name = name;
-	std::cout << "Hello " << name << std::endl;
+	std::cout << "Hello " << name << " from the heap" << std::endl;
 	return ;
 }
 

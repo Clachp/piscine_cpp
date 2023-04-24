@@ -6,9 +6,10 @@ CFLAGS = -Wall -Wextra -Werror -g3 -std=c++98
 
 SRCS = main.cpp \
 	Harl.cpp
+	
 OBJ = $(SRCS:.cpp=.o)
 
-%.o: %.c
+%.o: %.cpp
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME) : $(OBJ)

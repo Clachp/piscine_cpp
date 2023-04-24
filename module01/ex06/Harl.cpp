@@ -6,7 +6,7 @@
 /*   By: cchapon <cchapon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 19:00:05 by cchapon           #+#    #+#             */
-/*   Updated: 2023/02/08 13:13:49 by cchapon          ###   ########.fr       */
+/*   Updated: 2023/02/08 14:12:01 by cchapon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,15 +36,18 @@ void Harl::error(void) {
 };
 
 void Harl::complain(std::string level) {
-	typedef void (Harl::*ptr)();
-    std::string list[4] = { "DEBUG", "INFO", "WARNING", "ERROR"};
-    ptr messageType[4] = { &Harl::debug, &Harl::info, &Harl::warning, &Harl::error }; 
-    for (int i = 0; i < 4; i++) {
-        if (list[i].compare(level) == 0) {
-           std::cout << level << std::endl;
-           (this->*messageType[i])();
-           return ;
-        }
+    std::string message[] = { "DEBUG", "INFO", "WARNING", "ERROR" } ;
+    int i = 0;
+    while (message[i].data()) {
+        if (message[i] == level.data())
+            break ;
+        i++;
     }
-    std::cout << "Unknown argument" << std::endl;
+    switch (i) {
+        case 0 : std::cout << "[ " << message[0] << " ] " <<std::endl; debug();
+        case 1 : std::cout << "[ " << message[1] << " ] " <<std::endl; info();
+        case 2 : std::cout << "[ " << message[2] << " ] " <<std::endl; warning();
+        case 3 : std::cout << "[ " << message[3] << " ] " <<std::endl;  error(); break;
+        default : std::cout << "Unknown argument" << std::endl;
+    }
 }; 

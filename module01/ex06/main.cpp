@@ -1,34 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Harl.hpp                                           :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cchapon <cchapon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/06 18:59:59 by cchapon           #+#    #+#             */
-/*   Updated: 2023/02/08 12:49:43 by cchapon          ###   ########.fr       */
+/*   Created: 2023/02/06 18:59:53 by cchapon           #+#    #+#             */
+/*   Updated: 2023/02/08 14:14:38 by cchapon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
+#include "Harl.hpp"
 
-#ifndef _HARL_
-#define _HARL_
-
-class Harl {
-
-	
-	private :
-		void debug( void );
-		void info( void );
-		void warning( void );
-		void error( void );
-		
-	public :
-		Harl();
-		~Harl();
-		void complain( std::string level ); // level = DEBUG, INFO, WARNING, ERROR
-		//void (*messageType[4])();
-};
-
-#endif
+int main (int argc, char **argv)
+{
+    if (argc == 2) {
+        Harl harl_obj;
+        harl_obj.complain(argv[1]);
+    }
+    else
+        std::cout << "Enter DEBUG, INFO, WARNING or ERROR to get a message" << std::endl;
+    return (0);
+}

@@ -1,11 +1,12 @@
-NAME = sed
+NAME = Hearlfilter
 
 CC = c++
 
 CFLAGS = -Wall -Wextra -Werror -g3 -std=c++98
 
-SRCS = main.cpp
-
+SRCS = main.cpp \
+	Harl.cpp
+	
 OBJ = $(SRCS:.cpp=.o)
 
 %.o: %.cpp
@@ -19,7 +20,6 @@ all: $(NAME)
 
 clean:
 	@rm -rf $(OBJ)
-	@rm -rf *.replace
 	@echo "$(NAME) is clean"
 
 fclean: clean
