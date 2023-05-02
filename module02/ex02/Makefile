@@ -9,11 +9,16 @@ SRCS = Fixed.cpp \
 
 OBJ = $(SRCS:.cpp=.o)
 
-%.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+OBJ_path = obj/
+
+OBJ_PREFIXED	= $(addprefix $(OBJ_PATH), $(OBJ))
+
+$(OBJ_PATH)%.o: $(SRCS)%.cpp
+	mkdir -p $(OBJ_PATH)
+	$(CC) $(CFLAGS) -cpp $< -o $@
 
 $(NAME) : $(OBJ)
-	$(CC) $(CFLAGS) $(SRCS) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJ_PREFIXED) -o $(NAME)
 	@echo "$(NAME) compiled"
 
 all: $(NAME)

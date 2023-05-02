@@ -16,8 +16,8 @@ class Fixed {
         Fixed(Fixed const &src);
         ~Fixed();
 
-        Fixed &operator=(Fixed const &r);
-        Fixed &operator<<(Fixed const &r);
+        Fixed & operator=(Fixed const &r); // renvoie une reférence sur l'instance courante car possibilité de chainer les assignations
+        Fixed & operator<<(Fixed const &r);
        
         /*COMPARAISON OPERATORS*/
         bool operator>(Fixed const &r) const;
@@ -28,23 +28,25 @@ class Fixed {
         bool operator!=(Fixed const &r) const;
 
         /*ARITHMETICS OPERATORS*/
-        Fixed operator+(Fixed const &r);
+        Fixed operator+(Fixed const &r); // renvoie une copie de l'instance courante
         Fixed operator-(Fixed const &r);
         Fixed operator*(Fixed const &r);
         Fixed operator/(Fixed const &r);
 
         /*INCREMENT & DECREMENT OPERATORS*/
-        Fixed operator++( int );
-        // Fixed &operator-=(Fixed const &r);
-        // Fixed &operator<<(Fixed const &r);
-        // Fixed &operator<<(Fixed const &r);
+        Fixed &operator++(); // prefix increment
+        Fixed operator++( int ); //postfix increment
+        Fixed &operator--();
+        Fixed operator--(int);
 
         int     getRawBits( void ) const;
         void    setRawBits( int const raw );
         float   toFloat( void ) const;
         int     toInt( void ) const;
-        static  int getMin( int &raw_a, int &raw_b);
-        static  int getConstMin( int const &raw_a, int const &raw_b);
+        static  Fixed & min( Fixed &raw_a, Fixed &raw_b);
+        static  const Fixed & min( Fixed const  &raw_a, Fixed const &raw_b);
+        static  Fixed & max( Fixed &raw_a, Fixed &raw_b);
+        static  const Fixed & max( Fixed const &raw_a, Fixed const &raw_b);
 
     private:
         int _raw;
