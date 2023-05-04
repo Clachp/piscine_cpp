@@ -50,7 +50,7 @@ bool Fixed::operator!=(Fixed const &r) const {
 
 /* ARITHMETICS OPERATORS */
 Fixed Fixed::operator+(Fixed const &r) {
-    return this->toFloat() + r.toFloat(); // On est obligés de renvoyer une nouvelle instance 
+    return this->toFloat() + r.toFloat();
 };
 Fixed Fixed::operator-(Fixed const &r) {
     return this->toFloat() - r.toFloat();
@@ -67,7 +67,7 @@ Fixed & Fixed::operator++( ) {
     _raw++;
     return *this;
 };
-Fixed Fixed::operator++( int ) { // Postfix increment
+Fixed Fixed::operator++( int ) {
     Fixed old = *this;
     operator++();
     return old;
@@ -103,30 +103,33 @@ float Fixed::toFloat( void ) const {
 int Fixed::toInt( void ) const {
     return this->_raw >> this->_bits;
 };
-
-Fixed & Fixed::min( Fixed &raw_a, Fixed &raw_b) {
-    if (raw_a <= raw_b)
-        return raw_a;
+Fixed & Fixed::min( Fixed &fixA, Fixed &fixB) {
+    std::cout << "min called" << std::endl;
+    if (fixA <= fixB)
+        return fixA;
     else
-        return raw_b;
+        return fixB;
 };
-Fixed const & Fixed::min( Fixed const &raw_a, Fixed const &raw_b) {
-    if (raw_a <= raw_b)
-        return raw_a;
+Fixed const & Fixed::min( Fixed const &fixA, Fixed const &fixB) {
+    std::cout << "min with const parameters called" << std::endl;
+    if (fixA <= fixB)
+        return fixA;
     else
-        return raw_b;
+        return fixB;
 };
-Fixed & Fixed::max( Fixed &raw_a, Fixed &raw_b) {
-    if (raw_a >= raw_b)
-        return raw_a;
+Fixed & Fixed::max( Fixed &fixA, Fixed &fixB) {
+    std::cout << "max called" << std::endl;
+    if (fixA >= fixB)
+        return fixA;
     else
-        return raw_b;
+        return fixB;
 };
-Fixed const & Fixed::max( Fixed const &raw_a, Fixed const &raw_b) {
-    if (raw_a >= raw_b)
-        return raw_a;
+Fixed const & Fixed::max( Fixed const &fixA, Fixed const &fixB) {
+    std::cout << "max with const parameters called" << std::endl;
+    if (fixA >= fixB)
+        return fixA;
     else
-        return raw_b;
+        return fixB;
 };
 
 

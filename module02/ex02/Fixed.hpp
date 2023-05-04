@@ -16,8 +16,7 @@ class Fixed {
         Fixed(Fixed const &src);
         ~Fixed();
 
-        Fixed & operator=(Fixed const &r); // renvoie une reférence sur l'instance courante car possibilité de chainer les assignations
-        Fixed & operator<<(Fixed const &r);
+        Fixed & operator=(Fixed const &r); // renvoie une reférence sur l'instance courante
        
         /*COMPARAISON OPERATORS*/
         bool operator>(Fixed const &r) const;
@@ -43,10 +42,10 @@ class Fixed {
         void    setRawBits( int const raw );
         float   toFloat( void ) const;
         int     toInt( void ) const;
-        static  Fixed & min( Fixed &raw_a, Fixed &raw_b);
-        static  const Fixed & min( Fixed const  &raw_a, Fixed const &raw_b);
-        static  Fixed & max( Fixed &raw_a, Fixed &raw_b);
-        static  const Fixed & max( Fixed const &raw_a, Fixed const &raw_b);
+        static  Fixed & min( Fixed &fixA, Fixed &fixB);
+        static  const Fixed & min( Fixed const  &fixA, Fixed const &fixB);
+        static  Fixed & max( Fixed &fixA, Fixed &fixB);
+        static  const Fixed & max( Fixed const &fixA, Fixed const &fixB);
 
     private:
         int _raw;

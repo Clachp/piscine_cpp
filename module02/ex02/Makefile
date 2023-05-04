@@ -2,36 +2,35 @@ NAME = fixed2
 
 CC = c++
 
-CFLAGS = -Wall -Wextra -Werror -g3 -std=c++98
+CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRCS = Fixed.cpp \
+SRC = Fixed.cpp \
 	main.cpp
 
-OBJ = $(SRCS:.cpp=.o)
+OBJ_DIR = obj/
 
-OBJ_path = obj/
+OBJ	:=	$(addprefix $(OBJ_DIR),${SRC:.cpp=.o})
 
-OBJ_PREFIXED	= $(addprefix $(OBJ_PATH), $(OBJ))
-
-$(OBJ_PATH)%.o: $(SRCS)%.cpp
-	mkdir -p $(OBJ_PATH)
-	$(CC) $(CFLAGS) -cpp $< -o $@
+$(OBJ_DIR)%.o:	%.cpp
+			@mkdir -p $(OBJ_DIR)
+			$(CC) $(CFLAGS) -c $< -o $@
+			
 
 $(NAME) : $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ_PREFIXED) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
 	@echo "$(NAME) compiled"
 
-all: $(NAME)
+all: $(OBJ) $(NAME)
 
 clean:
-	@rm -rf $(OBJ)
-	@echo "Fixed is clean"
+	@rm -rf $(OBJ_DIR)
+	@echo "$(NAME) is clean"
 
 fclean: clean
 	@rm -rf $(NAME)
 
 re: fclean all
 
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re
 
 #.SILENT:

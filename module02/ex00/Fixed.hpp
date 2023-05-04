@@ -3,15 +3,13 @@
 
 #include <iostream>
 #include <cstring>
-#include <fstream> 
-#include <iomanip>
-#include <limits>
 
 class Fixed {
     public:
         Fixed( void );
         Fixed(Fixed const & src);
         ~Fixed();
+        
         Fixed & operator=(Fixed const & rhs);
 
         int     getRawBits( void ) const;
