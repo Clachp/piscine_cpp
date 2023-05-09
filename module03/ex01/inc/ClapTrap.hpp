@@ -20,7 +20,7 @@ class ClapTrap {
 		int getHitPoints(void) const;
 		int getEnergyPoints(void) const;
 		int getAttackDamage(void) const;
-		void displayData( void ) const;
+		void displayData( std::string str ) const;
 
 	protected :
 		std::string _name;

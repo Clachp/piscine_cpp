@@ -2,7 +2,7 @@
 # define SCAVTRAP_HPP
 
 #include <iostream>
-#include "ClapTrap.hpp"
+#include "./ClapTrap.hpp"
 
 class ScavTrap : public ClapTrap {
 	public :

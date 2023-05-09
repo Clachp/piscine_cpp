@@ -1,4 +1,4 @@
-NAME = ScavTrap
+NAME = FragTrap
 
 CC = c++
 
@@ -12,6 +12,7 @@ OBJ_DIR = obj/
 
 SRC = ClapTrap.cpp \
 	ScavTrap.cpp \
+	FragTrap.cpp \
 	main.cpp
 
 OBJ	:=	$(addprefix $(OBJ_DIR),${SRC:.cpp=.o})
