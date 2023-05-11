@@ -1,7 +1,7 @@
 #include "../inc/ClapTrap.hpp"
 
 /* CONSTRUCTORS */
-ClapTrap::ClapTrap () : _hit_pts(10), _energy_pts(10), _attack_damage(0) {
+ClapTrap::ClapTrap () : _name("Unnamed"), _hit_pts(10), _energy_pts(10), _attack_damage(0) {
 	std::cout << "ClapTrap default constructor called" << std::endl;
 	return ;	
 };
@@ -17,7 +17,7 @@ ClapTrap::ClapTrap( std::string name ) : _name(name), _hit_pts(10), _energy_pts(
 
 /* DESTRUCTOR */
 ClapTrap::~ClapTrap() {
-	if (_name != "")
+	if (_name != "Unnamed")
 		std::cout << "ClapTrap destructor called to destroy " << this->_name << std::endl;
 	else
 		std::cout << "ClapTrap destructor called." << std::endl;
@@ -49,20 +49,24 @@ int ClapTrap::getAttackDamage( void ) const {
 
 /* OTHER MEMBER FUNCTIONS */
 void ClapTrap::displayData(std::string str) const {
-	if (_name != "")
+	if (str != "")
 		std::cout << str << _name << " has : " << std::endl;
 	else
-		std::cout << str << " has : " << std::endl;
+		std::cout <<  _name <<" has : " << std::endl;
 	std::cout << _hit_pts << " hit points," << std::endl;
 	std::cout << _energy_pts << " energy points," << std::endl;
 	std::cout << _attack_damage << " attack dammages" << std::endl;
 	std::cout << std::endl;
 }
 void ClapTrap::attack(const std::string& target) {
+	std::string& no_name = const_cast<std::string&>(target);
+	if (target == "Unnamed")
+		no_name = "Unnamed target";
 	if (this->_hit_pts > 0 && this->_energy_pts > 0)
 	{
 		this->_energy_pts--;
 		this->_attack_damage++;
+		std::cout << "ClapTrap ";
 		std::cout << this->_name << " attacks " << target << ", causing " << this->_attack_damage << " points of damage !" << std::endl;
 		std::cout << "Now ";
 		displayData("ClapTrap ");
@@ -70,10 +74,9 @@ void ClapTrap::attack(const std::string& target) {
 	else if (this->_hit_pts == 0)
 		std::cout << this->_name << " has no hit points to attack " << target << std::endl << std::endl;
 	else if (this->_energy_pts == 0)
-		std::cout << this->_name << " has no energy points to attack " << target << std::endl << std::endl;;
+		std::cout << this->_name << " has no energy points to attack " << target << std::endl << std::endl;
 };
 void ClapTrap::takeDamage(unsigned int amount) {
-	std::cout << this->_name << " took a damage of " << amount << " points." << std::endl;
 	if (_hit_pts >= amount)
 	{
 		this->_hit_pts -= amount;

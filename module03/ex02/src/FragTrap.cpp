@@ -10,7 +10,7 @@ FragTrap::FragTrap() : ClapTrap() {
 };
 
 FragTrap::FragTrap(std::string name) : ClapTrap(name) {
-	std::cout << "FragTrap parameter constructor called to instance " << _name << std::endl;
+	std::cout << _name << " is a FragTrap" << std::endl;
 	this->_hit_pts = 100;
 	this->_energy_pts = 100;
 	this->_attack_damage = 30;
@@ -19,11 +19,15 @@ FragTrap::FragTrap(std::string name) : ClapTrap(name) {
 };
 
 void FragTrap::attack(const std::string& target) {
+	std::string& no_name = const_cast<std::string&>(target);
+	if (target == "Unnamed")
+		no_name = "Unnamed target";
 	if (this->_hit_pts > 0 && this->_energy_pts > 0)
 	{
 		this->_energy_pts--;
-		std::cout << "FragTrap " << this->_name;
-		std::cout << " attacks " << target << ", causing ";
+		std::cout << "Who is " << _name << " ?" << std::endl;
+		std::cout << _name << " is a FragTrap. ";
+		std::cout << "Attacking " << target << ", causing ";
 		std::cout << this->_attack_damage << " points of damage !" << std::endl;
 	}
 	else if (this->_hit_pts == 0)
@@ -34,12 +38,12 @@ void FragTrap::attack(const std::string& target) {
 	displayData("FragTrap ");
 };
 
-void FragTrap::highFivesGuys() {
-	std::cout << "FragTrap " << this->_name << " is asking for a high five." << std::endl;
+void FragTrap::highFivesGuys() const {
+		std::cout << "FragTrap " << this->_name << " is asking for a high five." << std::endl << std::endl;
 };
 
 FragTrap::~FragTrap() {
-	if (_name != "")
+	if (_name != "Unnamed")
 		std::cout << "FragTrap destructor called to destroy " << this->_name << std::endl;
 	else
 		std::cout << "FragTrap destructor called." << std::endl;

@@ -5,9 +5,12 @@
 int main ( void )
 {
 	ScavTrap H("Hector");
+
 	ClapTrap G("Gontran");
 	G.displayData("ClapTrap ");
+
 	FragTrap K("Kevin");
+
 	H.guardGate();
 	H.attack(G.getName());
 	G.takeDamage(H.getAttackDamage());

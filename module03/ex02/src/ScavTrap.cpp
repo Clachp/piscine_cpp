@@ -33,14 +33,11 @@ void ScavTrap::attack(const std::string& target) {
 	displayData("ScavTrap ");
 };
 
-void ScavTrap::guardGate() {
-	std::cout << "ScavTrap " << this->_name << " is on Gate keeper mode." << std::endl;
+void ScavTrap::guardGate() const{
+	std::cout << "ScavTrap " << this->_name << " is on Gate keeper mode." << std::endl << std::endl;
 };
 
 ScavTrap::~ScavTrap() {
-	if (_name != "")
 		std::cout << "ScavTrap destructor called to destroy " << this->_name << std::endl;
-	else
-		std::cout << "ScavTrap destructor called" << std::endl;
 	return ;
 };

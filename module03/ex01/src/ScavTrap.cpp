@@ -5,16 +5,16 @@ ScavTrap::ScavTrap() : ClapTrap() {
 	this->_hit_pts = 100;
 	this->_energy_pts = 50;
 	this->_attack_damage = 20;
-	this->displayData("ScavTrap ");
+	//this->displayData("ScavTrap ");
 	return ;	
 };
 
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name) {
-	std::cout << "ScavTrap parameter constructor called" << std::endl;
+	std::cout << "ScapTrap parameter constructor called to instance " << _name << std::endl;
 	this->_hit_pts = 100;
 	this->_energy_pts = 50;
 	this->_attack_damage = 20;
-	this->displayData("ScavTrap ");
+	//this->displayData("ScavTrap ");
 	return ;	
 };
 
@@ -33,14 +33,11 @@ void ScavTrap::attack(const std::string& target) {
 	displayData("ScavTrap ");
 };
 
-void ScavTrap::guardGate() {
-	std::cout << "ScavTrap " << this->_name << " is on Gate keeper mode." << std::endl;
+void ScavTrap::guardGate() const {
+		std::cout << "ScavTrap " << this->_name << " is on Gate keeper mode." << std::endl << std::endl;
 };
 
 ScavTrap::~ScavTrap() {
-	if (_name != "")
-		std::cout << "ClapTrap destructor called to destroy " << this->_name << std::endl;
-	else
-		std::cout << "ClapTrap destructor called to destroy no name." << std::endl;
+		std::cout << "ScavTrap destructor called to destroy " << this->_name << std::endl;
 	return ;
 };

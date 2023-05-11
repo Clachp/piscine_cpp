@@ -16,11 +16,11 @@ class ClapTrap {
 		void takeDamage(unsigned int amount);
 		void beRepaired(unsigned int amount);
 
-		std::string getName(void);
-		int getHitPoints(void);
-		int getEnergyPoints(void);
-		int getAttackDamage(void);
-		void displayData( void );
+		std::string getName(void) const;
+		int getHitPoints(void) const;
+		int getEnergyPoints(void) const;
+		int getAttackDamage(void) const;
+		void displayData( std::string str ) const;
 
 	private :
 		std::string _name;
