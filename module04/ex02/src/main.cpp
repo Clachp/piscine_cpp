@@ -3,7 +3,7 @@
 
 int main()
 {
-	Animal* tab[10];
+	A_Animal* tab[10];
 
 	for (int i = 0; i < 5; i++)
 	{
@@ -41,12 +41,5 @@ int main()
 	std::cout << snoop.getType() << " first idea : " << snoop.getBrain()->getIdea(0) << std::endl;
 	std::cout << snoopy.getType() << " first idea : " << snoopy.getBrain()->getIdea(0) << std::endl;
 	std::cout << std::endl;
-
 	return 0;
 }
-
-//Shallow copy : nouvelle instance d'objet qui ne copie que les references des membres de l'objet
-// a copier. les attibuts pointeurs auront la meme adresse
-
-//Deep copy : nouvelle instance d'objet qui copie tous les attributs d'origine y compris les pointeurs.
-// les pointeurs copies n'auront pas la meme adresse

@@ -6,13 +6,11 @@ Brain::Brain() {
 		this->_ideas[i] = "no idea here";
 	return ;
 };
-
 Brain::Brain( const Brain &src ) {
 	std::cout << "Brain copy constructor called" << std::endl;
 	*this = src;
 	return ;
 };
-
 Brain::~Brain( ) {
 	std::cout << "Brain destructor called" << std::endl;
 	return ;
@@ -36,3 +34,6 @@ void Brain::setIdea( std::string idea, int i ) {
 	else
 		std::cout << i << " is out of the 100 ideas range" << std::endl;
 };
+
+
+

@@ -8,7 +8,7 @@ class Dog : public Animal {
 		Dog();
 		Dog(const Dog &src);
 		Dog(std::string type);
-		~Dog();
+		virtual ~Dog();
 
 		virtual void makeSound(void) const;
 
