@@ -1,3 +1,8 @@
+#include "../inc/Character.hpp"
+#include "../inc/MateriaSource.hpp"
+#include "../inc/Cure.hpp"
+#include "../inc/Ice.hpp"
+
 
 int main()
 {
