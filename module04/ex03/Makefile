@@ -10,12 +10,10 @@ SRC_DIR = src/
 
 OBJ_DIR = obj/
 
-SRC = AMateria.cpp \
-		Character.cpp \
+SRC = 	Character.cpp \
 		Cure.cpp \
 		Ice.cpp \
-		ICharacter.cpp \
-		IMateriaSource.cpp \
+		AMateria.cpp \
 		MateriaSource.cpp \
 		main.cpp 
 	

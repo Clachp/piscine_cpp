@@ -3,6 +3,8 @@
 
 #include "AMateria.hpp"
 
+class AMateria;
+
 class ICharacter {
 	public :
 		ICharacter();
@@ -18,8 +20,7 @@ class ICharacter {
 		virtual void use(int idx, ICharacter& target) = 0;
 
 	protected :
-		std::string _name;
-		AMateria* _m[4];
+		
 
 };
 

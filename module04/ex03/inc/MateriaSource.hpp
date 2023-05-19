@@ -15,9 +15,7 @@ class MateriaSource : public IMateriaSource {
 		virtual void learnMateria(AMateria*);
 		virtual AMateria* createMateria(std::string const & type);
 
-	protected :
-		std::string _name;
-		AMateria* _mS[4];
+	private :
 
 };
 
