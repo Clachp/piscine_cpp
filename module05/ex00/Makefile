@@ -1,4 +1,4 @@
-NAME = Interface
+NAME = Bureaucrat
 
 CC = c++
 
@@ -10,15 +10,9 @@ SRC_DIR = src/
 
 OBJ_DIR = obj/
 
-SRC = 	Character.cpp \
-		Cure.cpp \
-		Ice.cpp \
-		AMateria.cpp \
-		MateriaSource.cpp \
-		ICharacter.cpp \
-		IMateriaSource.cpp \
-		main.cpp 
-	
+SRC = Bureaucrat.cpp \
+	main.cpp
+
 OBJ	:=	$(addprefix $(OBJ_DIR),${SRC:.cpp=.o})
 
 $(OBJ_DIR)%.o:	$(SRC_DIR)%.cpp

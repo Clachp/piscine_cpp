@@ -13,7 +13,8 @@ Character::Character( const Character &src ) {
 
 Character::~Character() {
 	for (int i = 0; i < 4; i++)
-		delete this->_m[i];
+		if (this->_m[i])
+			delete this->_m[i], this->_m[i] = NULL;
 };
 
 Character::Character(std::string const & name) {
@@ -28,7 +29,9 @@ Character & Character::operator=(const Character &rhs) {
 	{
 		_name = rhs._name;
 		for (int i = 0; i < 4; i++)
-			this->_m[i] = rhs._m[i];
+			delete _m[i];
+		for (int i = 0; i < 4; i++)
+			this->_m[i] = rhs._m[i]->clone();
 	}
 	return *this;
 };
@@ -41,9 +44,8 @@ void Character::equip(AMateria* m) {
 	for (int i = 0; i < 4; i++)
 	{
 		if (_m[i] == NULL)
-			_m[i] = m;
+			return (void)(_m[i] = m);
 	}
-	std::cout << _name << "'s equipement full" << std::endl;
 };
 
 void Character::unequip(int idx) {

@@ -3,6 +3,9 @@
 
 #include "ICharacter.hpp"
 #include "AMateria.hpp"
+#include "Ice.hpp"
+#include "Cure.hpp"
+class ICharacter;
 
 class Character : public ICharacter {
 	public :
