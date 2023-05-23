@@ -5,7 +5,7 @@ WrongCat::WrongCat( ) {
 	this->_type = "WrongCat";
 	return ;
 };
-WrongCat::WrongCat( const WrongCat &src ) {
+WrongCat::WrongCat( const WrongCat &src ) : WrongAnimal() {
 	std::cout << "WrongCat copy constructor called 🐱🐱" << std::endl;
 	*this = src;
 	return ;

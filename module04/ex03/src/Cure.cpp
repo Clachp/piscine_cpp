@@ -4,7 +4,7 @@ Cure::Cure() {
 	this->_type = "cure";
 	return ;
 };
-Cure::Cure( const Cure &src ) {
+Cure::Cure( const Cure &src ) : AMateria() {
 	*this = src;
 	return ;
 };
