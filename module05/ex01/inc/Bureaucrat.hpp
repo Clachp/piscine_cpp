@@ -7,7 +7,7 @@
 class Bureaucrat {
 	public :
 		Bureaucrat();
-		Bureaucrat(std::string const name, int grade);
+		Bureaucrat(std::string name, int grade);
 		Bureaucrat(const Bureaucrat & src);
 		~Bureaucrat();
 
@@ -28,7 +28,7 @@ class Bureaucrat {
 		void retroGrade(void);
 
 	private :
-		std::string const _name;
+		std::string _name;
 		int _grade;
 
 };

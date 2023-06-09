@@ -13,7 +13,7 @@ Bureaucrat::Bureaucrat(const Bureaucrat & src) {
 Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name), _grade(grade) {
 	if (grade < 1)
 		throw GradeTooHighException();
-	else if (grade > 150)
+	if (grade > 150)
 		throw GradeTooLowException();
 	std::cout << "Bureaucrat parameter constructor called" << std::endl;
 	return ;

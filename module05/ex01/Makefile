@@ -4,7 +4,7 @@ CC = c++
 
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-#SRC_DIR = src/
+SRC_DIR = src/
 
 #HEADER_DIR = inc/
 
@@ -15,7 +15,7 @@ SRC = Bureaucrat.cpp \
 
 OBJ	:=	$(addprefix $(OBJ_DIR),${SRC:.cpp=.o})
 
-$(OBJ_DIR)%.o: %.cpp
+$(OBJ_DIR)%.o: $(SRC_DIR)%.cpp
 			@mkdir -p $(OBJ_DIR)
 			$(CC) $(CFLAGS) -c $< -o $@
 			
