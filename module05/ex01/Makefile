@@ -1,4 +1,4 @@
-NAME = Bureaucrat
+NAME = Form
 
 CC = c++
 
@@ -11,6 +11,7 @@ SRC_DIR = src/
 OBJ_DIR = obj/
 
 SRC = Bureaucrat.cpp \
+	Form.cpp \
 	main.cpp
 
 OBJ	:=	$(addprefix $(OBJ_DIR),${SRC:.cpp=.o})

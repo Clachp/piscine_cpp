@@ -1,4 +1,6 @@
-#include "Bureaucrat.hpp"
+#include "../inc/Bureaucrat.hpp"
+#include "../inc/Form.hpp"
+
 
 /* CONSTRUCTORS */
 Bureaucrat::Bureaucrat() {
@@ -67,6 +69,11 @@ void Bureaucrat::retroGrade(void) {
 		std::cout << *this << std::endl;
 		throw (Bureaucrat::GradeTooLowException());
 	}
+};
+void Bureaucrat::signForm(Form &F) {
+	//try catch
+	std::cout << getName() << " signed the form " << F.getName() << std::endl;
+	std::cout << getName() << " couldn't sign the form " << F.getName() << because <reason>.std::endl;
 };
 
 std::string Bureaucrat::GradeTooHighException::error() const {
