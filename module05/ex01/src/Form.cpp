@@ -2,14 +2,14 @@
 
 /* CONSTRUCTORS */
 Form::Form() : _name("unnamed"), _sign(false), _sign_grade(150), _exec_grade(150) {
-	std::cout << "Form default constructor called" << std::endl;
+	std::cout << "Default Form" << std::endl;
 	return ;
 };
 Form::Form(const Form & src) : _name(src.getName()), 
 _sign(false), 
 _sign_grade(src.getSignGrade()), 
 _exec_grade(src.getExecGrade()) {
-	std::cout << "Form copy constructor called" << std::endl;
+	std::cout << "Copied Form" << std::endl;
 	*this = src;
 	return ;
 };
@@ -21,12 +21,12 @@ _exec_grade(exec_grade) {
 		throw GradeTooHighException();
 	if (sign_grade > 150 || exec_grade > 150)
 		throw GradeTooLowException();
-	std::cout << "Form parameter constructor called" << std::endl;
+	std::cout << "Parametered Form" << std::endl;
 	return ;
 };
 
 Form::~Form() {
-	std::cout << "Form destructor called" << std::endl;
+	std::cout << "Form destroyed" << std::endl;
     return ;
 };
 
@@ -50,17 +50,17 @@ Form & Form::operator=(const Form & rhs) {
 	return *this;
 };
 std::ostream & operator<<(std::ostream & flow, Form const & F) {
-    flow << "The form "<< F.getName();
+    flow << "Form :"<< F.getName() << std::endl;
     if (F.isSigned() == true) 
-        flow << " is signed." << std::endl;
+        flow << "Status: signed." << std::endl;
     else
-        flow << " is not signed." << std::endl;
-    flow << "It requires a grade " << F.getSignGrade();
-    flow << " to be signed, and a grade " << F.getExecGrade() << " to be executed" << std::endl;
+        flow << "Status: unsigned." << std::endl;
+    flow << "Grade required for signing: " << F.getSignGrade() << std::endl;
+    flow << "Grade required for executing: " << F.getExecGrade() << std::endl;
     return flow;
 };
 
-/* OTHER MEMBERS FUNCTIONS */
+/* METHODS */
 void Form::beSigned(Bureaucrat &B) {
     if (B.getGrade() <= _sign_grade)
     {
@@ -72,9 +72,9 @@ void Form::beSigned(Bureaucrat &B) {
 };
 
 std::string Form::GradeTooHighException::error() const {
-	return ("Form Grade too high");
+	return ("Form: lower grade required");
 }
 
 std::string Form::GradeTooLowException::error() const {
-	return ("Form Grade too low");
+	return ("Form: Higher grade required");
 }

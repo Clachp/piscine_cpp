@@ -4,11 +4,11 @@
 
 /* CONSTRUCTORS */
 Bureaucrat::Bureaucrat() {
-	std::cout << "Bureaucrat default constructor called" << std::endl;
+	std::cout << "Default Bureaucrat" << std::endl;
 	return ;
 };
-Bureaucrat::Bureaucrat(const Bureaucrat & src) {
-	std::cout << "Bureaucrat copy constructor called" << std::endl;
+Bureaucrat::Bureaucrat(const Bureaucrat & src) : _name(src.getName()) {
+	std::cout << "Copy Bureaucrat" << std::endl;
 	*this = src;
 	return ;
 };
@@ -17,12 +17,12 @@ Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name), _grade(grade)
 		throw GradeTooHighException();
 	if (grade > 150)
 		throw GradeTooLowException();
-	std::cout << "Bureaucrat parameter constructor called" << std::endl;
+	std::cout << "Parametered Bureaucrat" << std::endl;
 	return ;
 };
 
 Bureaucrat::~Bureaucrat() {
-	std::cout << "Bureaucrat destructor called" << std::endl;
+	std::cout << "Bureaucrat destroyed" << std::endl;
     return ;
 };
 
@@ -36,7 +36,6 @@ int Bureaucrat::getGrade(void) const {
 
 /* OPERATORS OVERLOADS */
 Bureaucrat & Bureaucrat::operator=(const Bureaucrat & rhs) {
-	//this->_name = rhs._name;
 	this->_grade = rhs._grade;
 	return *this;
 };
@@ -45,7 +44,7 @@ std::ostream & operator<<(std::ostream & flow, Bureaucrat const & obj) {
     return flow;
 };
 
-/* OTHER MEMBERS FUNCTIONS */
+/* METHODS */
 void Bureaucrat::upGrade(void) {
 	if (_grade > 1 && _grade <= 150)
 	{
@@ -71,15 +70,22 @@ void Bureaucrat::retroGrade(void) {
 	}
 };
 void Bureaucrat::signForm(Form &F) {
-	//try catch
-	std::cout << getName() << " signed the form " << F.getName() << std::endl;
-	std::cout << getName() << " couldn't sign the form " << F.getName() << because <reason>.std::endl;
+	try
+	{
+		F.beSigned(*this);
+		std::cout << getName() << " signed the form " << F.getName() << std::endl;
+	}
+	catch(Form::GradeTooLowException& E)
+	{
+		std::cout << getName() << " couldn't sign the form " << F.getName() <<  " because of this error :" << std::endl;
+		std::cerr << E.error() << '\n';
+	}
 };
 
 std::string Bureaucrat::GradeTooHighException::error() const {
-	return ("Grade too high");
+	return ("Bureaucrat: Grade too high");
 }
 
 std::string Bureaucrat::GradeTooLowException::error() const {
-	return ("Grade too low");
+	return ("Bureaucrat: Grade too low");
 }
