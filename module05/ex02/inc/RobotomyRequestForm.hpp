@@ -1,7 +1,8 @@
 #ifndef ROBOTOMYREQUESTFORM_HPP
 # define ROBOTOMYREQUESTFORM_HPP
 
-#include "Form.hpp"
+#include "A_Form.hpp"
+#include <cstdlib>
 
 class Bureaucrat;
 
@@ -9,10 +10,13 @@ class RobotomyRequestForm : public A_Form {
     public:
     	RobotomyRequestForm();
 		RobotomyRequestForm(const RobotomyRequestForm & src);
-		RobotomyRequestForm(std::string name, int sign_grade, int exec_grade);
+		RobotomyRequestForm(std::string _target);
 		~RobotomyRequestForm();
 
 		RobotomyRequestForm & operator=(const RobotomyRequestForm & rhs);
+
+		std::string getTarget() const;
+		void action() const;
 
 	private :
 		std::string _target;

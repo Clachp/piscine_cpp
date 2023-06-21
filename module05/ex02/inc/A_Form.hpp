@@ -22,6 +22,14 @@ class A_Form {
 			public :
 				virtual std::string error() const;
 		};
+		class SignFormException : public std::exception {
+			public :
+				virtual std::string error() const;
+		};
+		class ExecFailException : public std::exception {
+			public :
+				virtual std::string error() const;
+		};
 
 		A_Form & operator=(const A_Form & rhs);
 
@@ -29,15 +37,16 @@ class A_Form {
 		int getSignGrade(void) const;
         int getExecGrade(void) const;
         bool isSigned(void) const;
-		void beSigned(Bureaucrat &B);
-		void execute(Bureaucrat const & executor) const;
+
+		void beSigned(Bureaucrat const &B);
+		virtual void execute(Bureaucrat const & executor) const;
+		virtual void action() const = 0;
 
 	private :
 		std::string const _name;
         bool _sign;
         int const _sign_grade;
         int const _exec_grade;
-
 };
 
 std::ostream &operator<<(std::ostream &flow, A_Form const &obj);

@@ -2,11 +2,11 @@
 
 /* CONSTRUCTORS */
 Bureaucrat::Bureaucrat() {
-	std::cout << "Bureaucrat default constructor called" << std::endl;
+	std::cout << "default Bureaucrat default" << std::endl;
 	return ;
 };
 Bureaucrat::Bureaucrat(const Bureaucrat & src) {
-	std::cout << "Bureaucrat copy constructor called" << std::endl;
+	std::cout << "copied Bureaucrat" << std::endl;
 	*this = src;
 	return ;
 };
@@ -15,12 +15,12 @@ Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name), _grade(grade)
 		throw GradeTooHighException();
 	else if (grade > 150)
 		throw GradeTooLowException();
-	std::cout << "Bureaucrat parameter constructor called" << std::endl;
+	std::cout << "Parametered Bureaucrat" << std::endl;
 	return ;
 };
 
 Bureaucrat::~Bureaucrat() {
-	std::cout << "Bureaucrat destructor called" << std::endl;
+	std::cout << "Bureaucrat destroyed" << std::endl;
     return ;
 };
 
@@ -34,7 +34,6 @@ int Bureaucrat::getGrade(void) const {
 
 /* OPERATORS OVERLOADS */
 Bureaucrat & Bureaucrat::operator=(const Bureaucrat & rhs) {
-	//this->_name = rhs._name;
 	this->_grade = rhs._grade;
 	return *this;
 };
@@ -53,7 +52,7 @@ void Bureaucrat::upGrade(void) {
 	else 
 	{
 		std::cout << *this << std::endl;
-		throw (Bureaucrat::GradeTooHighException());
+		throw GradeTooHighException();
 	}
 };
 void Bureaucrat::retroGrade(void) {
@@ -65,7 +64,7 @@ void Bureaucrat::retroGrade(void) {
 	else 
 	{
 		std::cout << *this << std::endl;
-		throw (Bureaucrat::GradeTooLowException());
+		throw GradeTooLowException();
 	}
 };
 

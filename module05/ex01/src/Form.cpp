@@ -5,18 +5,14 @@ Form::Form() : _name("unnamed"), _sign(false), _sign_grade(150), _exec_grade(150
 	std::cout << "Default Form" << std::endl;
 	return ;
 };
-Form::Form(const Form & src) : _name(src.getName()), 
-_sign(false), 
-_sign_grade(src.getSignGrade()), 
-_exec_grade(src.getExecGrade()) {
+Form::Form(const Form & src) : _name(src.getName()), _sign(false), 
+_sign_grade(src.getSignGrade()), _exec_grade(src.getExecGrade()) {
 	std::cout << "Copied Form" << std::endl;
 	*this = src;
 	return ;
 };
 Form::Form(std::string name, int sign_grade, int exec_grade) : 
-_name(name), _sign(false),
-_sign_grade(sign_grade),
-_exec_grade(exec_grade) {
+_name(name), _sign(false), _sign_grade(sign_grade), _exec_grade(exec_grade) {
 	if (sign_grade < 1 || exec_grade < 1)
 		throw GradeTooHighException();
 	if (sign_grade > 150 || exec_grade > 150)
@@ -62,19 +58,25 @@ std::ostream & operator<<(std::ostream & flow, Form const & F) {
 
 /* METHODS */
 void Form::beSigned(Bureaucrat &B) {
-    if (B.getGrade() <= _sign_grade)
-    {
-        _sign = true;
-        std::cout << getName() << " form is signed by " << B.getName() << std::endl;
-    }
-    else
-        throw GradeTooLowException();
+	try {
+		if (B.getGrade() <= _sign_grade)
+		{
+			_sign = true;
+			std::cout << getName() << " form is signed by " << B.getName() << std::endl;
+		}
+		else
+			throw GradeTooLowException();
+	}
+	catch (GradeTooLowException & L) {
+		std::cout << "beSigned error : " << L.error() << std::endl;
+	}
+    
 };
 
 std::string Form::GradeTooHighException::error() const {
-	return ("Form: lower grade required");
+	return ("lower grade required");
 }
 
 std::string Form::GradeTooLowException::error() const {
-	return ("Form: Higher grade required");
+	return ("Higher grade required");
 }

@@ -46,46 +46,52 @@ std::ostream & operator<<(std::ostream & flow, Bureaucrat const & obj) {
 
 /* METHODS */
 void Bureaucrat::upGrade(void) {
-	if (_grade > 1 && _grade <= 150)
-	{
-		_grade--;
-		std::cout << this->getName() << " has been upgraded" << std::endl;
+	try {
+		if (_grade > 1 && _grade <= 150) {
+			_grade--;
+			std::cout << this->getName() << " has been upgraded" << std::endl;
+		}
+		else {
+			std::cout << *this << std::endl;
+			throw (Bureaucrat::GradeTooHighException());
+		}
 	}
-	else 
-	{
-		std::cout << *this << std::endl;
-		throw (Bureaucrat::GradeTooHighException());
+	catch (GradeTooHighException & H) {
+		std::cerr << " Upgrade bureaucrat error : " << H.error() << std::endl;
 	}
 };
 void Bureaucrat::retroGrade(void) {
-	if (_grade >= 1 && _grade < 150)
-	{
-		_grade++;
-		std::cout << this->getName() << " has been retrograded" << std::endl;
+	try {
+		if (_grade >= 1 && _grade < 150) {
+			_grade++;
+			std::cout << this->getName() << " has been retrograded" << std::endl;
+		}
+		else {
+			std::cout << *this << std::endl;
+			throw (Bureaucrat::GradeTooLowException());
+		}
 	}
-	else 
-	{
-		std::cout << *this << std::endl;
-		throw (Bureaucrat::GradeTooLowException());
+	catch (GradeTooLowException & L) {
+		std::cerr << " Retrograde bureaucrat error : " << L.error() << std::endl;
 	}
 };
 void Bureaucrat::signForm(Form &F) {
-	try
-	{
+	try {
 		F.beSigned(*this);
+		if (F.isSigned() == false)
+			throw (GradeTooLowException());
 		std::cout << getName() << " signed the form " << F.getName() << std::endl;
 	}
-	catch(Form::GradeTooLowException& E)
-	{
-		std::cout << getName() << " couldn't sign the form " << F.getName() <<  " because of this error :" << std::endl;
-		std::cerr << E.error() << '\n';
+	catch (GradeTooLowException & L) {
+		std::cout << getName() << " couldn't sign the form " << F.getName() <<  " because : ";
+		std::cerr << L.error() << std::endl;
 	}
 };
 
 std::string Bureaucrat::GradeTooHighException::error() const {
-	return ("Bureaucrat: Grade too high");
+	return ("Grade too high");
 }
 
 std::string Bureaucrat::GradeTooLowException::error() const {
-	return ("Bureaucrat: Grade too low");
+	return ("Grade too low");
 }

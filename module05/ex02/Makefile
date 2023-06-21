@@ -1,4 +1,4 @@
-NAME = Form
+NAME = Execution
 
 CC = c++
 
@@ -11,7 +11,9 @@ SRC_DIR = src/
 OBJ_DIR = obj/
 
 SRC = Bureaucrat.cpp \
-	Form.cpp \
+	A_Form.cpp \
+	RobotomyRequestForm.cpp \
+	ShrubberyCreationForm.cpp \
 	main.cpp
 
 OBJ	:=	$(addprefix $(OBJ_DIR),${SRC:.cpp=.o})

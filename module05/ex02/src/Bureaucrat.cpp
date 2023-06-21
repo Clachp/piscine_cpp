@@ -1,5 +1,5 @@
 #include "../inc/Bureaucrat.hpp"
-#include "../inc/Form.hpp"
+#include "../inc/A_Form.hpp"
 
 
 /* CONSTRUCTORS */
@@ -46,37 +46,32 @@ std::ostream & operator<<(std::ostream & flow, Bureaucrat const & obj) {
 
 /* METHODS */
 void Bureaucrat::upGrade(void) {
-	if (_grade > 1 && _grade <= 150)
-	{
+	if (_grade > 1 && _grade <= 150) {
 		_grade--;
 		std::cout << this->getName() << " has been upgraded" << std::endl;
 	}
-	else 
-	{
+	else {
 		std::cout << *this << std::endl;
 		throw (Bureaucrat::GradeTooHighException());
 	}
 };
+
 void Bureaucrat::retroGrade(void) {
-	if (_grade >= 1 && _grade < 150)
-	{
+	if (_grade >= 1 && _grade < 150) {
 		_grade++;
 		std::cout << this->getName() << " has been retrograded" << std::endl;
 	}
-	else 
-	{
+	else {
 		std::cout << *this << std::endl;
 		throw (Bureaucrat::GradeTooLowException());
 	}
 };
-void Bureaucrat::signForm(Form &F) {
-	try
-	{
+void Bureaucrat::signForm(A_Form &F) {
+	try {
 		F.beSigned(*this);
 		std::cout << getName() << " signed the form " << F.getName() << std::endl;
 	}
-	catch(Form::GradeTooLowException& E)
-	{
+	catch(A_Form::GradeTooLowException& E) {
 		std::cout << getName() << " couldn't sign the form " << F.getName() <<  " because of this error :" << std::endl;
 		std::cerr << E.error() << '\n';
 	}

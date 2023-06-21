@@ -1,80 +1,43 @@
-#include "../inc/Form.hpp"
+#include "../inc/PresidentialPardonForm.hpp"
 
 /* CONSTRUCTORS */
-Form::Form() : _name("unnamed"), _sign(false), _sign_grade(150), _exec_grade(150) {
-	std::cout << "Default Form" << std::endl;
+PresidentialPardonForm::PresidentialPardonForm() : A_Form("PPF", 25, 5), _target("target X") {
+	std::cout << "Default PresidentialPardonForm" << std::endl;
 	return ;
 };
-Form::Form(const Form & src) : _name(src.getName()), 
-_sign(false), 
-_sign_grade(src.getSignGrade()), 
-_exec_grade(src.getExecGrade()) {
-	std::cout << "Copied Form" << std::endl;
+PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm & src) {
+	std::cout << "Copied PresidentialPardonForm" << std::endl;
 	*this = src;
 	return ;
 };
-Form::Form(std::string name, int sign_grade, int exec_grade) : 
-_name(name), _sign(false),
-_sign_grade(sign_grade),
-_exec_grade(exec_grade) {
-	if (sign_grade < 1 || exec_grade < 1)
-		throw GradeTooHighException();
-	if (sign_grade > 150 || exec_grade > 150)
-		throw GradeTooLowException();
-	std::cout << "Parametered Form" << std::endl;
+PresidentialPardonForm::PresidentialPardonForm(std::string target) : A_Form("PPF", 25, 5), 
+_target(target) {
+	std::cout << "Parametered PresidentialPardonForm" << std::endl;
 	return ;
 };
 
-Form::~Form() {
-	std::cout << "Form destroyed" << std::endl;
+PresidentialPardonForm::~PresidentialPardonForm() {
+	std::cout << "PresidentialPardonForm destroyed" << std::endl;
     return ;
 };
 
-/* ACCESSORS */
-std::string Form::getName(void) const {
-	return this->_name;
-};
-bool Form::isSigned(void) const {
-    return this->_sign;
-};
-int Form::getSignGrade(void) const {
-	return this->_sign_grade;
-};
-int Form::getExecGrade(void) const {
-	return this->_exec_grade;
-};
-
 /* OPERATORS OVERLOADS */
-Form & Form::operator=(const Form & rhs) {
-	this->_sign = rhs._sign;
+PresidentialPardonForm & PresidentialPardonForm::operator=(const PresidentialPardonForm & rhs) {
+	this->_target = rhs._target;
 	return *this;
 };
-std::ostream & operator<<(std::ostream & flow, Form const & F) {
-    flow << "Form :"<< F.getName() << std::endl;
-    if (F.isSigned() == true) 
-        flow << "Status: signed." << std::endl;
-    else
-        flow << "Status: unsigned." << std::endl;
-    flow << "Grade required for signing: " << F.getSignGrade() << std::endl;
-    flow << "Grade required for executing: " << F.getExecGrade() << std::endl;
-    return flow;
-};
 
-/* METHODS */
-void Form::beSigned(Bureaucrat &B) {
-    if (B.getGrade() <= _sign_grade)
-    {
-        _sign = true;
-        std::cout << getName() << " form is signed by " << B.getName() << std::endl;
-    }
-    else
-        throw GradeTooLowException();
-};
-
-std::string Form::GradeTooHighException::error() const {
-	return ("Form: lower grade required");
+void PresidentialPardonForm::action() const {
+	std::cout << "Executing " << this->getName() << std::endl;
 }
 
-std::string Form::GradeTooLowException::error() const {
-	return ("Form: Higher grade required");
+void RobotomyRequestForm::action() const {
+
+	if (n % 2) {
+		std::cout << "ZZZZzzzzZZZzzz " << std::endl;
+		std::cout << this->getTarget() << " has been successfuly robotomised" << std::endl;
+	}
+	else {
+		throw ExecFailException();
+	}
 }
