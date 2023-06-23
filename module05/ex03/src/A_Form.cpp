@@ -47,7 +47,7 @@ A_Form & A_Form::operator=(const A_Form & rhs) {
 	return *this;
 };
 std::ostream & operator<<(std::ostream & flow, A_Form const & F) {
-    flow << "A_Form : "<< F.getName() << std::endl;
+    flow << "A_Form :"<< F.getName() << std::endl;
     if (F.isSigned() == true) 
         flow << "Status: signed." << std::endl;
     else
@@ -96,7 +96,7 @@ const char* A_Form::GradeTooHighException::error() const throw() {
 	return ("lower grade required");
 }
 const char* A_Form::GradeTooLowException::error() const throw() {
-	return ("Higher grade required");
+	return ("higher grade required");
 }
 const char* A_Form::SignFormException::error() const throw() {
 	return ("form unsigned");

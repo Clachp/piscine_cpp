@@ -16,27 +16,27 @@ class Form {
 
 		class GradeTooHighException : public std::exception {
 			public :
-				virtual std::string error() const;
+				virtual const char* error() const throw();
 		};
 		class GradeTooLowException : public std::exception {
 			public :
-				virtual std::string error() const;
+				virtual const char* error() const throw();
 		};
 
 		Form & operator=(const Form & rhs);
 
 		std::string getName(void) const;
+        bool isSigned(void) const;
 		int getSignGrade(void) const;
         int getExecGrade(void) const;
-        bool isSigned(void) const;
 
 		void beSigned(Bureaucrat &B);
 
 	private :
-		std::string const _name;
-        bool _sign;
-        int const _sign_grade;
-        int const _exec_grade;
+		std::string const	_name;
+        bool				_sign;
+        int const			_sign_grade;
+        int const			_exec_grade;
 
 };
 

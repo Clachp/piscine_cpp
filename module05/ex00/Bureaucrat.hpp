@@ -13,11 +13,11 @@ class Bureaucrat {
 
 		class GradeTooHighException : public std::exception {
 			public :
-				virtual std::string error() const;
+				virtual const char* error() const throw();
 		};
 		class GradeTooLowException : public std::exception {
 			public :
-				virtual std::string error() const;
+				virtual const char* error() const throw();
 		};
 
 		Bureaucrat & operator=(const Bureaucrat & rhs);

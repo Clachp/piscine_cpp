@@ -19,7 +19,7 @@ class PresidentialPardonForm : public A_Form {
 		void action() const;
 
 	private :
-		std::string	_target;
+		std::string _target;
 
 };
 

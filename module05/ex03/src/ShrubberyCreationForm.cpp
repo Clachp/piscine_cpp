@@ -21,7 +21,6 @@ ShrubberyCreationForm::~ShrubberyCreationForm() {
     return ;
 };
 
-/* ACCESSORS */
 std::string ShrubberyCreationForm::getTarget() const {
 	return this->_target;
 };
@@ -43,7 +42,6 @@ std::ostream & operator<<(std::ostream & flow, ShrubberyCreationForm const & F) 
     return flow;
 };
 
-/* METHODS */
 void ShrubberyCreationForm::action() const {
 	std::ofstream	outfile;
 	std::string		filename = this->_target + "_shrubbery";

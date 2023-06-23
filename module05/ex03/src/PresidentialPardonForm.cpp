@@ -48,7 +48,6 @@ void PresidentialPardonForm::action() const {
 	if (_target.compare("target X")) {
 		std::cout << this->getTarget() << " has been forgiven by Zaphod Beeblebrox." << std::endl;
 	}
-	else {
+	else
 		throw ExecFailException();
-	}
 };

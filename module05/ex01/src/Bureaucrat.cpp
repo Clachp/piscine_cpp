@@ -1,7 +1,6 @@
 #include "../inc/Bureaucrat.hpp"
 #include "../inc/Form.hpp"
 
-
 /* CONSTRUCTORS */
 Bureaucrat::Bureaucrat() {
 	std::cout << "Default Bureaucrat" << std::endl;
@@ -53,11 +52,11 @@ void Bureaucrat::upGrade(void) {
 		}
 		else {
 			std::cout << *this << std::endl;
-			throw (Bureaucrat::GradeTooHighException());
+			throw (GradeTooHighException());
 		}
 	}
 	catch (GradeTooHighException & H) {
-		std::cerr << " Upgrade bureaucrat error : " << H.error() << std::endl;
+		std::cerr << "Upgrade bureaucrat error : " << H.error() << std::endl;
 	}
 };
 void Bureaucrat::retroGrade(void) {
@@ -68,11 +67,11 @@ void Bureaucrat::retroGrade(void) {
 		}
 		else {
 			std::cout << *this << std::endl;
-			throw (Bureaucrat::GradeTooLowException());
+			throw (GradeTooLowException());
 		}
 	}
 	catch (GradeTooLowException & L) {
-		std::cerr << " Retrograde bureaucrat error : " << L.error() << std::endl;
+		std::cerr << "Retrograde bureaucrat error : " << L.error() << std::endl;
 	}
 };
 void Bureaucrat::signForm(Form &F) {
@@ -88,10 +87,10 @@ void Bureaucrat::signForm(Form &F) {
 	}
 };
 
-std::string Bureaucrat::GradeTooHighException::error() const {
+/* EXCEPTIONS */
+const char* Bureaucrat::GradeTooHighException::error() const throw() {
 	return ("Grade too high");
 }
-
-std::string Bureaucrat::GradeTooLowException::error() const {
+const char* Bureaucrat::GradeTooLowException::error() const throw() {
 	return ("Grade too low");
 }

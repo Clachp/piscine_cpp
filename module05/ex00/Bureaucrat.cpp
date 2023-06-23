@@ -2,7 +2,7 @@
 
 /* CONSTRUCTORS */
 Bureaucrat::Bureaucrat() {
-	std::cout << "default Bureaucrat default" << std::endl;
+	std::cout << "default Bureaucrat" << std::endl;
 	return ;
 };
 Bureaucrat::Bureaucrat(const Bureaucrat & src) {
@@ -42,36 +42,32 @@ std::ostream & operator<<(std::ostream & flow, Bureaucrat const & obj) {
     return flow;
 };
 
-/* OTHER MEMBERS FUNCTIONS */
+/* METHODS */
 void Bureaucrat::upGrade(void) {
-	if (_grade > 1 && _grade <= 150)
-	{
+	if (_grade > 1 && _grade <= 150) {
 		_grade--;
 		std::cout << this->getName() << " has been upgraded" << std::endl;
 	}
-	else 
-	{
+	else {
 		std::cout << *this << std::endl;
 		throw GradeTooHighException();
 	}
 };
 void Bureaucrat::retroGrade(void) {
-	if (_grade >= 1 && _grade < 150)
-	{
+	if (_grade >= 1 && _grade < 150) {
 		_grade++;
 		std::cout << this->getName() << " has been retrograded" << std::endl;
 	}
-	else 
-	{
+	else {
 		std::cout << *this << std::endl;
 		throw GradeTooLowException();
 	}
 };
 
-std::string Bureaucrat::GradeTooHighException::error() const {
+/* EXCEPTIONS */
+const char* Bureaucrat::GradeTooHighException::error() const throw() {
 	return ("Grade too high");
 }
-
-std::string Bureaucrat::GradeTooLowException::error() const {
+const char* Bureaucrat::GradeTooLowException::error() const throw() {
 	return ("Grade too low");
 }

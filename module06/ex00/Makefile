@@ -1,25 +1,21 @@
-NAME = Execution
+NAME = Converter
 
 CC = c++
 
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRC_DIR = src/
+#SRC_DIR = src/
 
 #HEADER_DIR = inc/
 
 OBJ_DIR = obj/
 
-SRC = Bureaucrat.cpp \
-	A_Form.cpp \
-	RobotomyRequestForm.cpp \
-	ShrubberyCreationForm.cpp \
-	PresidentialPardonForm.cpp \
+SRC = ScalarConverter.cpp \
 	main.cpp
 
 OBJ	:=	$(addprefix $(OBJ_DIR),${SRC:.cpp=.o})
 
-$(OBJ_DIR)%.o: $(SRC_DIR)%.cpp
+$(OBJ_DIR)%.o: %.cpp
 			@mkdir -p $(OBJ_DIR)
 			$(CC) $(CFLAGS) -c $< -o $@
 			
@@ -32,7 +28,6 @@ all: $(OBJ) $(NAME)
 
 clean:
 	@rm -rf $(OBJ_DIR)
-	@rm *_shrubbery
 	@echo "$(NAME) is clean"
 
 fclean: clean

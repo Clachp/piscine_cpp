@@ -19,7 +19,7 @@ int main (void)
 
 	std::cout << std::endl << "--- MAKING A FORM ---" << std::endl;
 	try {
-		Form F("F1", 80, 10);
+		Form F("F1", 200, 10);
 		std::cout << F << std::endl;
 	}
 	catch (Form::GradeTooHighException& H) {
@@ -33,11 +33,10 @@ int main (void)
 	try {
 		Bureaucrat B("joel", 5);
 		std::cout << B << std::endl << std::endl;
-		Form F("F2", 50, 10);
+		Form F("F2", 2, 10);
 		std::cout << F << std::endl;
 		B.signForm(F);
 		//F.beSigned(B);
-		std::cout << F << std::endl;
 	}
 	catch (Bureaucrat::GradeTooHighException& H) {
 		std::cerr << "ERROR\n" << H.error() << std::endl;

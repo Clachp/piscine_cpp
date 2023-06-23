@@ -52,7 +52,6 @@ void RobotomyRequestForm::action() const {
 		std::cout << "ZZZZzzzzZZZzzz " << std::endl;
 		std::cout << this->getTarget() << " has been successfuly robotomised" << std::endl;
 	}
-	else {
+	else
 		throw ExecFailException();
-	}
 };

@@ -1,4 +1,4 @@
-NAME = Execution
+NAME = Intern
 
 CC = c++
 
@@ -12,6 +12,7 @@ OBJ_DIR = obj/
 
 SRC = Bureaucrat.cpp \
 	A_Form.cpp \
+	Intern.cpp \
 	RobotomyRequestForm.cpp \
 	ShrubberyCreationForm.cpp \
 	PresidentialPardonForm.cpp \

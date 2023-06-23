@@ -15,11 +15,11 @@ class Bureaucrat {
 
 		class GradeTooHighException : public std::exception {
 			public :
-				virtual std::string error() const;
+				virtual const char* error() const throw();
 		};
 		class GradeTooLowException : public std::exception {
 			public :
-				virtual std::string error() const;
+				virtual const char* error() const throw();
 		};
 
 		Bureaucrat & operator=(const Bureaucrat & rhs);
@@ -31,8 +31,8 @@ class Bureaucrat {
 		void signForm(Form &F);
 
 	private :
-		std::string _name;
-		int _grade;
+		std::string const	_name;
+		int					_grade;
 
 };
 

@@ -46,7 +46,7 @@ Form & Form::operator=(const Form & rhs) {
 	return *this;
 };
 std::ostream & operator<<(std::ostream & flow, Form const & F) {
-    flow << "Form :"<< F.getName() << std::endl;
+    flow << "Form: "<< F.getName() << std::endl;
     if (F.isSigned() == true) 
         flow << "Status: signed." << std::endl;
     else
@@ -57,12 +57,12 @@ std::ostream & operator<<(std::ostream & flow, Form const & F) {
 };
 
 /* METHODS */
-void Form::beSigned(Bureaucrat &B) {
+void Form::beSigned(Bureaucrat & signator) {
 	try {
-		if (B.getGrade() <= _sign_grade)
+		if (signator.getGrade() <= _sign_grade)
 		{
 			_sign = true;
-			std::cout << getName() << " form is signed by " << B.getName() << std::endl;
+			std::cout << getName() << " form is signed by " << signator.getName() << std::endl;
 		}
 		else
 			throw GradeTooLowException();
@@ -70,13 +70,12 @@ void Form::beSigned(Bureaucrat &B) {
 	catch (GradeTooLowException & L) {
 		std::cout << "beSigned error : " << L.error() << std::endl;
 	}
-    
 };
 
-std::string Form::GradeTooHighException::error() const {
+/* EXCEPTIONS */
+const char* Form::GradeTooHighException::error() const throw() {
 	return ("lower grade required");
 }
-
-std::string Form::GradeTooLowException::error() const {
+const char* Form::GradeTooLowException::error() const throw() {
 	return ("Higher grade required");
 }
