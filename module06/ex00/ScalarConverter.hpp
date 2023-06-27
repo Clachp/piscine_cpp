@@ -6,20 +6,11 @@
 #include <limits>
 #include <cstdlib>
 
-//récupérer le type de littéral passé en parametre : char, int, float, double 
-//convertir l'argument de char* vers son type
-//puis le convertir vers les 3 autres types 
-
-bool isChar(std::string const & arg);
-bool isInt(std::string const & arg);
-bool isFloat(std::string const & arg);
-bool isDouble(std::string const & arg);
-
 class ScalarConverter {
 	public :
 		static void convert(std::string const & arg);
-
-		
+		static void charConvert(std::string const & arg);
+		static void numberConvert(std::string const & arg);
 
 };
 

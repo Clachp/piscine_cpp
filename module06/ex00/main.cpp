@@ -1,22 +1,19 @@
 #include "ScalarConverter.hpp"
 
+void display (char c, int i, float f, double d) {
+    std::cout << "char: " << c << std::endl;
+    std::cout << "int: " << i << std::endl;
+    std::cout << "float: " << f << std::endl;
+    std::cout << "double: " << d << std::endl;
+
+}
+
 int main (int argc, char **argv)
 {
     if (argc != 2) {
         std::cout << "One argument needed" << std::endl;
         return 0;
     }
-    if (isChar(argv[1]))
-        std::cout << "Yes char : " << argv[1] << std::endl;
-    else
-        std::cout << "No char : " << argv[1] << std::endl;
-    if (isInt(argv[1]))
-        std::cout << "Yes int : " << argv[1] << std::endl;
-    else
-        std::cout << "No int : " << argv[1] << std::endl;
-     if (isFloat(argv[1]))
-        std::cout << "Yes float : " << argv[1] << std::endl;
-    else
-        std::cout << "No float : " << argv[1] << std::endl;
+
     return 0;
 }
