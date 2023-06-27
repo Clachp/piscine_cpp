@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include <string>
-#include <climits>
+#include <limits>
 #include <cstdlib>
 
 //récupérer le type de littéral passé en parametre : char, int, float, double 
@@ -18,11 +18,6 @@ bool isDouble(std::string const & arg);
 class ScalarConverter {
 	public :
 		static void convert(std::string const & arg);
-		
-		char toChar(std::string const & arg);
-		int toInt(std::string const & arg);
-		float toFloat(std::string const & arg);
-		double toDouble(std::string const & arg);
 
 		
 

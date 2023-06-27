@@ -14,5 +14,9 @@ int main (int argc, char **argv)
         std::cout << "Yes int : " << argv[1] << std::endl;
     else
         std::cout << "No int : " << argv[1] << std::endl;
+     if (isFloat(argv[1]))
+        std::cout << "Yes float : " << argv[1] << std::endl;
+    else
+        std::cout << "No float : " << argv[1] << std::endl;
     return 0;
 }
