@@ -1,4 +1,4 @@
-NAME = converter
+NAME = convert
 
 CC = c++
 
@@ -11,6 +11,7 @@ CFLAGS = -Wall -Wextra -Werror -std=c++98
 OBJ_DIR = obj/
 
 SRC = ScalarConverter.cpp \
+	utils.cpp \
 	main.cpp
 
 OBJ	:=	$(addprefix $(OBJ_DIR),${SRC:.cpp=.o})
