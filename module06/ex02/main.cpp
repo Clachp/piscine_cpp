@@ -2,6 +2,14 @@
 
 int main (void) 
 {
-	Base *p = NULL;
-	identify (p);
+	Base *one = generate();;
+	identify(one);
+	identify(*one);
+	delete one;
+
+	Base *two = NULL;
+	identify(two);
+	identify(*two);
+
+	return 0;
 }

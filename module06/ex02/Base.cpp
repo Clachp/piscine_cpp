@@ -13,19 +13,42 @@ Base * generate(void) {
 };
 
 void identify(Base* p) {
-	p = generate();
-	A *a = dynamic_cast<A *>(p);
-	B *b = dynamic_cast<B *>(p);
-	C *c = dynamic_cast<C *>(p);
-	if (a)
-		std::cout << "A" << std::endl;
-	else if (b)
-		std::cout << "B" << std::endl;
-	else if (c)
-		std::cout << "C" << std::endl;
+	std::cout << "--- Upcasting Base POINTER to the right type ---" << std::endl;
+	if (dynamic_cast<A *>(p))
+		std::cout << "Dynamic cast to type A => Base class is of type A\n" << std::endl;
+	else if (dynamic_cast<B *>(p))
+		std::cout << "Dynamic cast to type B => Base class is of type B\n" << std::endl;
+	else if (dynamic_cast<C *>(p))
+		std::cout << "Dynamic cast to type C => Base class is of type C\n" << std::endl;
 	else
-		std::cout << "NULL" << std::endl;
-	delete p;
+		std::cout << "Base is NULL" << std::endl;
 };
 
-void identify(Base& p);
+void identify(Base& p) {
+	std::cout << "--- Upcasting Base REFERENCE to the right type ---" << std::endl;
+	try {
+		A &a = dynamic_cast<A &>(p);
+		(void) a;
+		std::cout << "Conversion to A OK => Base class is of type A\n" << std::endl;
+		return ;
+	} catch (std::exception &err) {
+		//std::cout << "Base class is not of type A" << std::endl;
+	}
+	try {
+		B &b = dynamic_cast<B &>(p);
+		(void) b;
+		std::cout << "Conversion to B OK => Base class is of type B\n" << std::endl;
+		return ;
+	} catch (std::exception &err) {
+		//std::cout << "Base class is not of type B" << std::endl;
+	}
+	try {
+		C &c = dynamic_cast<C &>(p);
+		(void) c;
+		std::cout << "Conversion to C OK => Base class is of type C\n" << std::endl;
+		return ;
+	} catch (std::exception &err) {
+		//std::cout << "Base class is not of type C" << std::endl;
+	}
+	std::cout << "Base is NULL" << std::endl;
+};
