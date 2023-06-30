@@ -10,14 +10,14 @@ void printElem(T elem)
 };
 
 template<typename T>
-void checkValue(T elem, const T &value)
+void up10(T elem)
 {
-	if (elem > value)
-		std::cout << elem << " is bigger than " << value << std::endl;
+	T up = elem + 10;
+	std::cout << elem << " + 10 = " << up << std::endl;
 }
 
 template<typename T, typename f_type>
-void iter(T tab[], size_t size, f_type function)
+void iter(T *tab, size_t size, f_type function)
 {
 	for (size_t i = 0; i < size; ++i)
         function(tab[i]);
