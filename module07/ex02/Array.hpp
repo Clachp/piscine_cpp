@@ -16,6 +16,7 @@ class Array {
         T & operator[](size_t index);  // not returning const T for [] to be a reading and writing operator
 
         size_t size() const;
+        void fill(const T & val);
         void printArray() const;
 
         struct badIndexException : public std::exception {

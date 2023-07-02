@@ -58,8 +58,14 @@ size_t Array<T>::size() const {
 }
 
 template<typename T>
+void Array<T>::fill(const T & val) {
+    for (size_t i = 0; i < _size; i++)
+        _tab[i] = val;
+};
+
+template<typename T>
 void Array<T>::printArray() const {
-    iter<T>(_tab, _size, printElem<int>);
+    iter<T>(_tab, _size, printElem<T>);
 };
 
 template<typename T>

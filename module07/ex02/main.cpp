@@ -9,7 +9,7 @@ int main (void)
     std::cout << tabInt.size() << std::endl;
     Array<char> charTab;
     charTab.fill('g');
-
+    charTab.printArray();
 
     delete a;
     return 0;
