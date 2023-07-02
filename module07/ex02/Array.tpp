@@ -1,26 +1,30 @@
 #include "Array.hpp"
+#include "../ex01/iter.hpp"
 
 template<typename T>
  Array<T>::Array() : _size(5) {
     _tab = new T[_size]; 
     for (size_t i = 0; i < _size; i++) {
-        _tab[i] = T();
-        std::cout << i << std::endl;
+        _tab[i] = T(); //Conseil: Essayez de compiler int *a = new int(); puis affichez *a
+        std::cout << "tab[" << i << "] = " <<  _tab[i] << std::endl;
     }
-    std::cout << _size << std::endl;
+    return ;
 }
 
 template<typename T>
 Array<T>::Array(unsigned int n) : _size(n) {
-    _tab = new T[n];
-    for (unsigned int i = 0; i < n; i++) {
+    _tab = new T[_size];
+    for (unsigned int i = 0; i < _size; i++) {
         _tab[i] = T();
     }
 }
 
 template<typename T>
 Array<T>::Array(Array const & src) {
-    this = &src;
+    _size = src._size;
+    _tab = new T[_size];
+    for (size_t i = 0; i < _size; i++)
+        _tab[i] = src._tab[i];
     return ;
 }
 
@@ -42,16 +46,23 @@ Array<T> & Array<T>::operator=(const Array<T> &rhs) {
 }
 
 template<typename T>
-const T & Array<T>::operator[](size_t index) {
+T & Array<T>::operator[](size_t index) {
     if (index >= _size)
-        throw std::exception();
+        throw Array<T>::badIndexException();
     return _tab[index];
 }
 
 template<typename T>
-size_t Array<T>::size() {
-    size_t i = 0;
-    while (_tab[i])
-        i++;
-    return i;
+size_t Array<T>::size() const {
+    return _size;
 }
+
+template<typename T>
+void Array<T>::printArray() const {
+    iter<T>(_tab, _size, printElem<int>);
+};
+
+template<typename T>
+const char* Array<T>::badIndexException::what() const throw() {
+    return ("Bad index exception using the [] operator\n");
+};

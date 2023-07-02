@@ -3,21 +3,20 @@
 
 #include <iostream>
 
-template<typename T>
-void printElem(T elem)
-{
+template<typename TO>
+void printElem(TO elem) {
 	std::cout << elem << std::endl;
 };
 
-template<typename T>
-void up10(T elem)
+template<typename TO>
+void up10(TO elem)
 {
-	T up = elem + 10;
+	TO up = elem + 10;
 	std::cout << elem << " + 10 = " << up << std::endl;
 }
 
-template<typename T, typename f_type>
-void iter(T *tab, size_t size, f_type function)
+template<typename TO, typename f_type>
+void iter(TO *tab, size_t size, f_type function)
 {
 	for (size_t i = 0; i < size; ++i)
         function(tab[i]);

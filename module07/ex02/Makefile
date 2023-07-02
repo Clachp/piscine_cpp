@@ -10,7 +10,7 @@ CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 OBJ_DIR = obj/
 
-SRC = main.cpp
+SRC = maintest.cpp
 
 OBJ	:=	$(addprefix $(OBJ_DIR),${SRC:.cpp=.o})
 

@@ -2,6 +2,7 @@
 # define ARRAY_HPP
 
 #include <iostream>
+#include <cstdlib>
 
 template<typename T>
 class Array {
@@ -12,13 +13,14 @@ class Array {
         ~Array();
 
         Array & operator=(const Array &rhs);
-        const T & operator[](size_t index);
+        T & operator[](size_t index);  // not returning const T for [] to be a reading and writing operator
 
-        size_t size();
+        size_t size() const;
+        void printArray() const;
 
-        // class badIndex : public std::excetpion {
-
-        // }
+        struct badIndexException : public std::exception {
+            virtual const char* what() const throw();
+        };
 
         private:
             T *_tab;
