@@ -25,7 +25,7 @@ int main (void)
 	Data *copy = Serializer::deserialize(serialized);
 	//Data *copy = serialized; // ERROR !!
 
-	std::cout << "--- Pointer Copy structure infos ---" << std::endl;
+	std::cout << "--- Copy structure infos ---" << std::endl;
 	std::cout << "Adress : " << &copy << std::endl;
 	std::cout << "copy->i: " << copy->i << std::endl;
 	std::cout << "copy->string : " << copy->str << std::endl << std::endl;

@@ -31,24 +31,18 @@ void identify(Base& p) {
 		(void) a;
 		std::cout << "Conversion to A OK => Base class is of type A\n" << std::endl;
 		return ;
-	} catch (std::exception &err) {
-		//std::cout << "Base class is not of type A" << std::endl;
-	}
+	} catch (std::exception &err) {}
 	try {
 		B &b = dynamic_cast<B &>(p);
 		(void) b;
 		std::cout << "Conversion to B OK => Base class is of type B\n" << std::endl;
 		return ;
-	} catch (std::exception &err) {
-		//std::cout << "Base class is not of type B" << std::endl;
-	}
+	} catch (std::exception &err) {}
 	try {
 		C &c = dynamic_cast<C &>(p);
 		(void) c;
 		std::cout << "Conversion to C OK => Base class is of type C\n" << std::endl;
 		return ;
-	} catch (std::exception &err) {
-		//std::cout << "Base class is not of type C" << std::endl;
-	}
+	} catch (std::exception &err) {}
 	std::cout << "Base is NULL" << std::endl;
 };
