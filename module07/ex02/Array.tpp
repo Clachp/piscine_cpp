@@ -1,6 +1,7 @@
 #include "Array.hpp"
 #include "../ex01/iter.hpp"
 
+/* CONSTRUCTORS */
 template<typename T>
  Array<T>::Array() : _size(5) {
     _tab = new T[_size]; 
@@ -33,6 +34,7 @@ Array<T>::~Array() {
     delete[] _tab;
 }
 
+/* OPERATORS OVERLOADS */
 template<typename T>
 Array<T> & Array<T>::operator=(const Array<T> &rhs) {
     if (this == &rhs)
@@ -52,6 +54,7 @@ T & Array<T>::operator[](size_t index) {
     return _tab[index];
 }
 
+/* METHODS */
 template<typename T>
 size_t Array<T>::size() const {
     return _size;
@@ -68,6 +71,7 @@ void Array<T>::printArray() const {
     iter<T>(_tab, _size, printElem<T>);
 };
 
+/* EXCEPTIONS */
 template<typename T>
 const char* Array<T>::badIndexException::what() const throw() {
     return ("Bad index exception using the [] operator\n");
