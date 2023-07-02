@@ -2,14 +2,25 @@
 # define EASYFIND_HPP
 
 #include <iostream>
+#include <exception>
+#include <vector>
+#include <deque>
+#include <list>
 
 template<typename T>
-int easyfind (T const & target, int n) {
-	for (int i = 0; i < target.size(); i++) {
-		if (target[i] == n)
-			return i; 
+void easyfind (T const & target, int n) {
+	try {
+		for (size_t i = 0; i < target.size(); i++) {
+			if (target[i] == n) {
+				std::cout << "value " << n << " is at index " << i << std::endl;
+				return ; 
+			}
+			throw std::exception();
+		}
 	}
-	return -1;
-};
-
+	catch (std:: exception &e){
+		std::cerr << "Error\n" << "value " << n << " not found\n";
+		std::cerr << e.what() << std::endl; 
+	}
+}
 #endif
