@@ -10,15 +10,21 @@ int main (void)
 	for (std::vector<int>::iterator it = tab.begin() ; it != tab.end(); ++it)
 		std::cout << ' ' << *it;
 	std::cout << '\n';
-	easyfind(tab, -40);
+	easyfind(tab, 12);
 
 	//list : ~liste doublement chainée 
 	std::list<int>lst(5, 100);
 	easyfind(lst, 100);
 
 	//deque
-	std::deque<int>deq = [5, 78, 40, -4, 0]; // declarer deque
-	easyfind(tab, 0);
-
+	std::deque<int>deq;	
+	for (int i= 0; i < 8; i++) 
+		deq.insert(deq.end(), i *3);
+	std::cout << "deq contains:";
+	std::deque<int>::iterator it = deq.begin();
+	while (it != deq.end())
+		std::cout << ' ' << *it++;
+	std::cout << '\n';
+	easyfind(deq, 6);
 	return 0;
 }
