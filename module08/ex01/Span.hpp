@@ -4,6 +4,7 @@
 #include <iostream>
 #include <algorithm>
 #include <vector>
+#include <ctime>
 
 class Span {
 	public:
@@ -19,11 +20,16 @@ class Span {
 		void printTab() const;
 
 		void addNumber(int n);
-		void addNumber();
+		void addNumber(void);
 		int shortestSpan() const;
 		int longestSpan() const;
 
 		class MaxSizeException : public std::exception {
+			public:
+				virtual const char* what() const throw();
+		};
+
+		class DistanceException : public std::exception {
 			public:
 				virtual const char* what() const throw();
 		};

@@ -15,5 +15,11 @@ int main (void)
 	std::cout << sp.shortestSpan() << std::endl;
 	std::cout << sp.longestSpan() << std::endl;
 
+	Span spa = Span(100);
+	spa.addNumber();
+	spa.printTab();
+	std::cout << spa.shortestSpan() << std::endl;
+	std::cout << spa.longestSpan() << std::endl;
+
 	return 0;
 }

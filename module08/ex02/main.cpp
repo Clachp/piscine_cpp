@@ -85,15 +85,14 @@ int main()
 	//[...]
 	lst.push_back(0);
 	
-	int *i = &lst.front();
-	int *ie = &lst.back();
+	std::list<int>::iterator ilb = lst.begin();
+	std::list<int>::iterator ile = lst.end();
 	
-	++i;
-	--i;
-	while (i != ie) {
-		std::cout << i << std::endl;
-		++i;
+	++ilb;
+	--ilb;
+	while (ilb != ile) {
+		std::cout << *ilb << std::endl;
+		++ilb;
 	}
-	//std::stack<int> s(lst);
 	return 0;
 }

@@ -6,15 +6,21 @@ int main (void)
 	std::vector<int> tab(4, 42);
 	for (int i = 1; i < 8; i++)
 		tab.push_back(i + 5);
-	 std::cout << "vector tab contains:";
+	std::cout << "vector tab contains:";
 	for (std::vector<int>::iterator it = tab.begin() ; it != tab.end(); ++it)
 		std::cout << ' ' << *it;
 	std::cout << '\n';
 	easyfind(tab, 12);
+	std::cout << "-----" << std::endl;
 
 	//list : ~liste doublement chainée 
 	std::list<int>lst(5, 100);
+	std::cout << "list lst contains:";
+  	for (std::list<int>::iterator it=lst.begin(); it != lst.end(); ++it)
+    	std::cout << ' ' << *it;
+	std::cout << '\n';
 	easyfind(lst, 100);
+	std::cout << "-----" << std::endl;
 
 	//deque
 	std::deque<int>deq;	

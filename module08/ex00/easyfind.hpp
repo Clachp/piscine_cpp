@@ -20,10 +20,12 @@ void easyfind (T const & target, int n) {
 	try {
 		int range = 0;
 		typename T::const_iterator it = target.begin();
-		// it = std::find (target.begin(), target.end(), n);
+		typename T::const_iterator fit = std::find (it, target.end(), n);
+		if (fit != target.end())
+			std::cout << "Value " << *fit << " found in container with \"std::find\" method\n";
 		while (it != target.end()) {
 			if (*it == n) {
-				std::cout << "value " << n << " is at index " << range << std::endl;
+				std::cout << "value " << *it << " is at index " << range << std::endl;
 				return ;
 			} 
 			range++;
