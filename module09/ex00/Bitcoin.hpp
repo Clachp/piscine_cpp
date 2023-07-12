@@ -16,37 +16,31 @@ class Bitcoin {
 
 		Bitcoin & operator=(Bitcoin const & rhs);
 
-		void fillMap(std::ifstream & file);
-		std::string  getDate(std::string & line, std::string::size_type & pos);
-		float  getValue(std::string & line, std::string::size_type & pos);
+		void	btcExchange(char *arg);
+		void	checkLine(std::string line);
+		void	getExchange();
+		void	checkDate(std::string date);
+		void	checkValue(std::string val);
 
 		class fileException : public std::exception {
 			public:
 				virtual const char* what() const throw();
 		};
-
 		class dateException : public std::exception {
 			public:
-				dateException(std::string err) : _err(err) {};
-				const char* what() const throw();
-			
-			private:
-				std::string _err;
-
+				virtual const char* what() const throw();
 		};
-
 		class valueException : public std::exception {
 			public:
 				virtual const char* what() const throw();
 		};
-
-		class badContentException : public std::exception {
+		class lineException : public std::exception {
 			public:
 				virtual const char* what() const throw();
 		};
 
 	private:
-		std::map<std::string, float> _rate;
+		std::map<std::string, float> _data;
 
 };
 

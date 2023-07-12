@@ -1,97 +1,121 @@
 #include "Bitcoin.hpp"
 
-Bitcoin::Bitcoin() {};
-
+// A l'instanciation de l'objet bitcoin, je stocke le contenu de la DB dans la map
+Bitcoin::Bitcoin() {
+	std::ifstream file("./data/data.csv");
+	if (!file)
+		throw fileException();
+	std::string line = "";
+	getline(file, line);
+	while (getline(file, line)) 
+	{
+		std::string::size_type pos = line.find(',');
+		if (pos != std::string::npos) {
+		std::string date = line.substr(0, pos);
+		float value  = std::atof(line.substr(pos + 1).c_str());
+		_data[date] = value;
+		}
+	}
+	file.close();
+	// print map _data content
+	// std::map<std::string,float>::iterator it; 
+	// for (it = _data.begin(); it != _data.end(); ++it)
+    // 	std::cout << it->first << " => " << it->second << '\n';
+};
 Bitcoin::Bitcoin(Bitcoin const & src) {
 	*this = src;
 };
-
 Bitcoin::~Bitcoin() {};
 
 Bitcoin & Bitcoin::operator=(const Bitcoin & rhs) {
-	(void) rhs;
+	if (this != &rhs)
+		_data = rhs._data;
 	return *this ;
 };
 
-std::string  Bitcoin::getDate(std::string &line, std::string::size_type & pos) {
+
+void Bitcoin::btcExchange(char *arg) {
+	std::ifstream file(arg);
+	if (!file) 
+		throw fileException ();
+	std::string line = "";
+	getline(file, line);
+	while (getline(file, line)) {
+		try {
+			checkLine(line);
+			getExchange();
+		}
+		catch (lineException &e) {
+			std::cerr << e.what() << "=> " << line << std::endl;
+		}
+		catch (dateException &e) {
+			std::cerr << e.what() << "=> " << line.substr(0, line.find('|')) <<  std::endl;
+		}
+		catch (valueException &e) {
+			std::cerr << e.what() << "=> " << line.substr(line.find('|') + 1) << std::endl;
+		}
+	}
+	file.close();
+}
+
+void Bitcoin::checkLine(std::string line) {
+	if (line.size() < 13) 
+		throw lineException();
+	std::string::size_type pos = line.find('|');
+	if (pos == std::string::npos)
+		throw lineException();
+
 	std::string date = line.substr(0, pos);
 	date.erase(0, date.find_first_not_of(" "));
 	date.erase(date.find_last_not_of(" ") + 1);
-	if (date.length() == 10 && (date[4] == '-' || date[7] == '-')) {
-		for (int i = 0; i < 10; ++i) {
-			if (i != 4 && i != 7 && !isdigit(date[i]))
-				throw dateException(date);
-		}
-	}
-	else
-		throw dateException(date);
-	return date;
+	checkDate(date);
+
+	std::string val = line.substr(pos + 1);
+    val.erase(0, val.find_first_not_of(" "));
+    val.erase(val.find_last_not_of(" ") + 1);
+	checkValue(val);
 }
 
-float  Bitcoin::getValue(std::string &line, std::string::size_type & pos) {
-	std::string str = line.substr(pos + 1);
-    str.erase(0, str.find_first_not_of(" "));
-    str.erase(str.find_last_not_of(" ") + 1);
+void Bitcoin::checkDate(std::string date) {
+	if (date.length() != 10 || date[4] != '-' || date[7] != '-')
+		throw dateException ();	
+	for (int i = 0; i < 10; ++i) {
+		if (i != 4 && i != 7 && !isdigit(date[i]))
+			throw dateException ();
+	};
+	int y = std::atoi(date.substr(0, 4).c_str());
+	int m = std::atoi(date.substr(5, 2).c_str());
+	int d = std::atoi(date.substr(8, 2).c_str());
+	if ( y < 2009 || y > 2022 || m < 1 || m > 12 || d < 1 || d > 31)
+		throw dateException ();
+}
+
+void  Bitcoin::checkValue(std::string val) {
 	int dot = 0;
-	for (size_t i = 0; i < str.size(); i++) {
-		if (!isdigit(str[i]) && str[i] != '.')
+	for (size_t i = 0; i < val.size(); i++) {
+		if (!isdigit(val[i]) && val[i] != '.')
 			throw valueException();
-		if (str[i] == '.')
+		if (val[i] == '.')
 			dot++;
 		else if (dot > 1)
 			throw valueException();
 	}
-	float valueFloat = 0.0f;
-	std::istringstream(str) >> valueFloat;
-	if (valueFloat > 1000) {
-		std::cout << "Error: too large a number." << std::endl;
-		throw valueException();
-	}
-	return valueFloat;
 }
 
-void Bitcoin::fillMap(std::ifstream & file) {
-	std::string line;
-    while (std::getline(file, line)) {
-        std::string::size_type pos = line.find('|');
-		try {
-        	if (pos != std::string::npos) {
-				std::string date = getDate(line, pos);
-				int value  = getValue(line, pos);
-				std::cout << "date = " << date << ", value = " << value << std::endl;
-				_rate[date] = value;
-			}
-			else
-				throw badContentException();
-        }
-		catch (Bitcoin::dateException &e) {
-			std::cerr << e.what() << std::endl;
-		}
-		catch (Bitcoin::valueException &e) {
-			std::cerr << e.what() << std::endl;
-		}
-		catch (Bitcoin::badContentException &e) {
-			std::cerr << e.what() << line << std::endl;
-		}
-    }
-    file.close();
-};
+void Bitcoin::getExchange() {
 
+}
+
+/* EXCEPTIONS */
 const char* Bitcoin::fileException::what() const throw() {
 	return ("Error: could not open file.");
 }
-
 const char* Bitcoin::dateException::what() const throw() {
-	std::string str = "Error: unvalid date => " + _err;
-	return str.c_str();
+	return ("Error: unvalid date ");
 }
-
 const char* Bitcoin::valueException::what() const throw() {
-	return ("Error: unvalid value => ");
+	return ("Error: unvalid value ");
 }
-
-const char* Bitcoin::badContentException::what() const throw() {
-	return ("Error: bad content => ");
+const char* Bitcoin::lineException::what() const throw() {
+	return ("Error: bad content ");
 }
-
-
