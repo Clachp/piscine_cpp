@@ -17,10 +17,9 @@ class Bitcoin {
 		Bitcoin & operator=(Bitcoin const & rhs);
 
 		void	btcExchange(char *arg);
-		void	checkLine(std::string line);
-		void	getExchange();
+		void	getExchange(std::string line);
 		void	checkDate(std::string date);
-		void	checkValue(std::string val);
+		float	getValue(std::string val);
 
 		class fileException : public std::exception {
 			public:
