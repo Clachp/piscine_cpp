@@ -53,7 +53,6 @@ int RPN::calculate(std::string arg) {
 			return 0;
 		else
 			throw std::exception();
-	
 	}
 	return _number.top();
 }
