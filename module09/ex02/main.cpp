@@ -26,9 +26,33 @@ int main (int argc, char **argv)
         }
         inputSeq.push_back(num);
     }
+
+    std::vector<int> vec;
+
     std::cout << "Before: ";
-    for (std::deque<int>::iterator it = inputSeq.begin(); it != inputSeq.end(); ++it)
+    for (std::deque<int>::iterator it = inputSeq.begin(); it != inputSeq.end(); ++it) {
         std::cout << ' ' << *it;
+        vec.push_back(*it);
+        // inputSeq.erase(it);
+    }
     std::cout << std::endl;
+
+    std::cout << "Vec before: ";
+    for (std::vector<int>::iterator it = vec.begin(); it != vec.end(); ++it) {
+        std::cout << ' ' << *it;
+    }
+    std::cout << std::endl;
+
+    vec = mergeSortVetor(vec);
+
+    std::cout << "Vec after: ";
+    for (std::vector<int>::iterator it = vec.begin(); it != vec.end(); ++it) {
+        std::cout << ' ' << *it;
+    }
+    std::cout << std::endl;
+
+
     return 0;
+
+
 }

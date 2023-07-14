@@ -7,8 +7,8 @@
 #include <exception>
 #include <cstdlib>
 #include <deque>
-#include <cstring>
+#include <vector>
 
-
+std::vector<int> & mergeSortVetor(std::vector<int> & vec);
 
 #endif
