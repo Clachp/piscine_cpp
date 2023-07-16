@@ -9,6 +9,7 @@
 #include <deque>
 #include <vector>
 #include <list>
+#include <sys/time.h>
 
 std::vector<int> mergeSortVetor(std::vector<int> & vec);
 std::list<int> mergeSortList(std::list<int> & lst);
