@@ -8,7 +8,9 @@
 #include <cstdlib>
 #include <deque>
 #include <vector>
+#include <list>
 
-std::vector<int> & mergeSortVetor(std::vector<int> & vec);
+std::vector<int> mergeSortVetor(std::vector<int> & vec);
+std::list<int> mergeSortList(std::list<int> & lst);
 
 #endif
