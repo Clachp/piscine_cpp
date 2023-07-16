@@ -49,11 +49,9 @@ int RPN::calculate(std::string arg) {
 		if ((elem[0] == '0' && i == 0) || (i > 0 && i <= 9) || (i >= -9 && i < 0)) {
 			_number.push(i);
 		}
-		else if (_number.size() == 2 && token.find(elem[0]) != std::string::npos) {
+		else if (_number.size() >= 2 && token.find(elem[0]) != std::string::npos) {
 			do_calc(elem[0]);
 		}
-		else if (_number.size() != 2 && token.find(elem[0]) != std::string::npos)
-			return 0;
 		else
 			throw std::exception();
 	}
