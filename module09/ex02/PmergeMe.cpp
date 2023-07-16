@@ -1,5 +1,6 @@
 #include "PmergeMe.hpp"
 
+/*---------------------- SORTING VECTOR CONTAINER ---------------------------------*/
 std::vector<int> mergeVector (std::vector<int> & vec_a, std::vector<int> & vec_b) {
     std::vector<int> vec_c;
 
@@ -41,6 +42,7 @@ std::vector<int> mergeSortVetor(std::vector<int> & vec) {
     return mergeVector(vec_a, vec_b);
 }
 
+/*---------------------- SORTING LIST CONTAINER ---------------------------------*/
 std::list<int> mergeList (std::list<int> & lst_a, std::list<int> & lst_b) {
     std::list<int> lst_c;
 

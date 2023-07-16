@@ -1,23 +1,26 @@
 #include "RPN.hpp"
 
+/* CONSTRUCTORS */
 RPN::RPN() {};
 RPN::RPN(RPN const & src) {
 	*this = src;
 };
 RPN::~RPN() {};
 
+/* OPERATOR OVERLOADS */
 RPN & RPN::operator=(RPN const & rhs) {
 	if (this != &rhs)
 		_number = rhs._number;
 	return *this;
 };
 
-
+/* METHODS */
 void RPN::do_calc(char token) {
 	int b = _number.top();
 	_number.pop();
 	int a = _number.top();
 	int res = 0;
+	
 	if (token == '+')
 		res = a + b;
 	else if (token == '-')

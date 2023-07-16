@@ -41,6 +41,7 @@ int main (int argc, char **argv)
     std::vector<int> vec;
     std::list<int> lst;
 
+    // Display
     std::cout << "Before: ";
     for (std::deque<int>::iterator it = inputSeq.begin(); it != inputSeq.end(); ++it) {
         std::cout << ' ' << *it;
@@ -49,6 +50,7 @@ int main (int argc, char **argv)
     }
     std::cout << std::endl;
 
+    // Sort and calculate duration
     timeval startTime, endTime_vec, endTime_lst;
     gettimeofday(&startTime, NULL);
 
@@ -60,6 +62,7 @@ int main (int argc, char **argv)
     gettimeofday(&endTime_lst, NULL);
     double duration_lst = (endTime_lst.tv_sec - startTime.tv_sec) * 1000000.0 + (endTime_lst.tv_usec - startTime.tv_usec);
 
+    // Display 
     std::cout << "After: ";
     for (std::vector<int>::iterator it = vec.begin(); it != vec.end(); ++it) {
         std::cout << ' ' << *it;

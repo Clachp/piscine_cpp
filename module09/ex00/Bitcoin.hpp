@@ -40,21 +40,6 @@ class Bitcoin {
 
 	private:
 		std::map<std::string, float> _data;
-
 };
 
 #endif
-//map
-//A quoi sert le inputfile ? => storing the different prices & dates to evaluate
-
-// output = valeur des 
-
-// 1) parsing : - format de l'argument
-//				- contenu de l'inputfile : format "date | value"
-//				- date = year-month-day
-//				- value = float ou int entre 0 et 1000
-
-// 2) formatage des donnnees : dans le fichier data.csv, tu cherches la date correspondant 
-// a la date de l'input, tu reccupere l'exchange_rate correspondant pour le multiplier avec la value de l'inputfile correspndant a la date
-
-// 2) Gestion d'erreur: - 
